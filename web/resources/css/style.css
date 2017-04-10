@@ -1,0 +1,28 @@
+div.block{
+    position: absolute;
+    margin-top: -35px;
+    margin-left: 250px;
+}
+
+.href {
+    /* Первые два свойства нужны чтобы убрать отступы в IE */
+    overflow: visible;
+    width: auto;
+
+    /* Убираем отступы */
+    margin: 0;
+    padding: 0;
+
+    /* Убираем все элементы оформления кнопки */
+    background: none;
+    border: none;
+
+    /* Обычный для ссылок курсор */
+    cursor: pointer;
+}
+
+/* Ссылка обычно подчеркнута */
+.href {
+    color: #00f;
+    text-decoration: underline;
+}
