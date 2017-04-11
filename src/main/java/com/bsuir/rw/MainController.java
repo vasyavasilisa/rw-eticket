@@ -38,22 +38,7 @@ public class MainController {
     /*Попадаем сюда на старте приложения (см. параметры аннотации и настройки пути после деплоя) */
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String main() {
-
         return "main";
-    }
-
-
-    @RequestMapping(value = "/passenger-services", method = RequestMethod.POST)
-    public String passengerServices() {
-        return  "passangerservices";
-    }
-
-    @RequestMapping(value = "/byebook", method = RequestMethod.POST)
-    public ModelAndView byebook(@ModelAttribute("trainParam") Train train) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("trainParam", new Train());
-        modelAndView.setViewName("byebook");
-        return modelAndView;
     }
 
     @ModelAttribute("trainParam")
@@ -67,6 +52,35 @@ public class MainController {
         return "empty";
     }
 
+
+
+    @RequestMapping(value = "/passenger-services", method = RequestMethod.POST)
+    public String passengerServices() {
+        return  "passangerservices";
+    }
+
+    @RequestMapping(value = "/passenger-services", method = RequestMethod.GET)
+    public String passengerServicesGet() {
+        return  "passangerservices";
+    }
+/////////////////////////////////////////////////////////////////////////////////
+
+    @RequestMapping(value = "/byebook", method = RequestMethod.POST)
+    public ModelAndView byebook(@ModelAttribute("trainParam") Train train) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("trainParam", new Train());
+        modelAndView.setViewName("byebook");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/byebook", method = RequestMethod.GET)
+    public ModelAndView byebookGet(@ModelAttribute("trainParam") Train train) {
+       return byebook(train);
+    }
+/////////////////////////////////////////////////////////////////////
+
+
+
     /*как только на index.jsp подтвердится форма
     <spring:form method="post"  modelAttribute="userJSP" action="check-user">,
     то попадем вот сюда
@@ -77,24 +91,17 @@ public class MainController {
     @RequestMapping(value = "/findtrains", method = RequestMethod.POST)
     public ModelAndView findtrains(@ModelAttribute("trainParam") Train train/*,@ModelAttribute("trainInfo") TrainInfo trainInfo*/){
 
-        System.out.println(train.getDepartment());
-        System.out.println(train.getArrive());
-        System.out.println(train.getDate());
         List<TrainsBean> arrayTrains = new ArrayList<TrainsBean>();
-
         TrainsService service= new TrainsService();
         arrayTrains= service.getAllTrainsByDateStations(train.getDate(),train.getDepartment(),train.getArrive());
         ModelAndView modelAndView = new ModelAndView();
         if (arrayTrains.isEmpty()) {
-
             boolean isExistRout = service.isRoutExist(train.getDate(),train.getDepartment(),train.getArrive());
-
             if (!isExistRout) {//////////////////////Не найден маршрут
                 modelAndView.addObject("errorRout", ERR_ROUT);
 
             } else {////////////////////////////Не найдена дата
                 modelAndView.addObject("errorRout", ERR_DATE);
-
             }
             modelAndView.setViewName("byebook");
             return modelAndView;
@@ -107,10 +114,17 @@ public class MainController {
         }
     }
 
+    @RequestMapping(value = "/findtrains", method = RequestMethod.GET)
+    public ModelAndView findtrainsGet(@ModelAttribute("trainParam") Train train/*,@ModelAttribute("trainInfo") TrainInfo trainInfo*/){
+
+      return  findtrains(train);
+    }
+
+    ////////////////////////////////////////////////////////////////
 
     @RequestMapping(value = "/trains-info", method = RequestMethod.POST)
-    public ModelAndView trainsinfo(@RequestParam(value = "middlestations", required = false) String id_train_for_st,
-                                   @RequestParam(value = "idTrain", required = false) String id_train_for_carr){    /*Промежуточные или вагоны */
+    public ModelAndView trainsinfo(@RequestParam(value = "middlestations",required = false) String id_train_for_st,
+                                   @RequestParam(value = "idTrain",required = false) String id_train_for_carr){    /*Промежуточные или вагоны */
         List<StationsOfTrainBean> arrayStations = new ArrayList<StationsOfTrainBean>();
         ModelAndView modelAndView = new ModelAndView();
         if (id_train_for_st!= null) {
@@ -118,6 +132,7 @@ public class MainController {
             arrayStations=service.getAllStationsOfTrain(id_train_for_st);
             modelAndView = new ModelAndView();
             modelAndView.addObject("stations",arrayStations);
+         //   modelAndView.addObject("middlestations",id_train_for_st);
             modelAndView.setViewName("middlestations");
             return modelAndView;
         }
@@ -125,9 +140,11 @@ public class MainController {
         else if(id_train_for_carr!=null){
             TrainsService service= new TrainsService();
             List<CarriagesBean> beans = new ArrayList<CarriagesBean>();
+            modelAndView = new ModelAndView();
             beans =  service.getCarriagesForTrain(Integer.valueOf(id_train_for_carr));
             modelAndView.addObject("carriages",beans);
             modelAndView.addObject("trainId",id_train_for_carr);
+           // modelAndView.addObject("idTrain",id_train_for_carr);
             modelAndView.setViewName("carriagesforusers");
             return modelAndView;
         }
@@ -136,11 +153,23 @@ public class MainController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/trains-info", method = RequestMethod.GET)
+    public ModelAndView trainsinfoGet(@ModelAttribute(value = "middlestations") String id_train_for_st,
+                                      @ModelAttribute(value = "idTrain") String id_train_for_carr){    /*Промежуточные или вагоны */
+        return trainsinfo(id_train_for_st,id_train_for_carr);
+
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
     @RequestMapping(value = "/trains-sort", method = RequestMethod.POST)
-    public ModelAndView trainsSort(@RequestParam(SORT_PARAM) String sort_param,@RequestParam("date") String date,
+    public ModelAndView trainsSort(@RequestParam(value=SORT_PARAM ,required = false) String sort_param,@RequestParam(value="date",required = false) String date,
                                    @ModelAttribute("trainParam") Train train){    /*Промежуточные или вагоны */
         List<TrainsBean> trainsArray = new ArrayList<TrainsBean>();
         ModelAndView modelAndView = new ModelAndView();
+        if(sort_param!=null) {
         if (sort_param.equals(SORT_DEPARTURE_PARAM)){///////////////сортировать по времени отправления
 
             TrainsService service= new TrainsService();
@@ -162,13 +191,22 @@ public class MainController {
             return modelAndView;
         }
 
+        }
 
-
-
+        TrainsService service = new TrainsService();
+        trainsArray = service.getTrainsOrderByTimeDep(train.getDate(), train.getDepartment(), train.getArrive());
+        modelAndView.addObject("trains", trainsArray);
+        modelAndView.setViewName("findtrains");
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/trains-sort", method = RequestMethod.GET)
+    public ModelAndView trainsSortGet(@RequestParam(value=SORT_PARAM,required = false) String sort_param,@RequestParam(value="date",required = false) String date,
+                                   @ModelAttribute("trainParam") Train train) {    /*Промежуточные или вагоны */
+     return trainsSort(sort_param,date,train);
+
     }
 
 
 
-
-}
+    }
