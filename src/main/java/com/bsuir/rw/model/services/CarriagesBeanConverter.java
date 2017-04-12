@@ -32,6 +32,7 @@ public class CarriagesBeanConverter {
                 CarriagesBean bean= new CarriagesBean();
                 bean.setIdCarriage(car.getIdCarriageOfTrain());
                 bean.setNumber(car.getNumber());
+                bean.setType(car.getType());
                 int count=0;
                 for(Places pl:car.getPlacesByIdCarriageOfTrain()){
                     if(pl.getStatus().equals("свободно")){

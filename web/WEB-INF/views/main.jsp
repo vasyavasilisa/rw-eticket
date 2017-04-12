@@ -19,20 +19,18 @@
 </head>
 <body>
 
-<span style="float: right">
-     <a href="?lang=ru"> <spring:message code="application.rusLocale" /></a>
-    <a href="?lang=en">  <spring:message code="application.enLocale" /></a>
 
-    </span>
-
+<jsp:include page="locales.jsp"></jsp:include>
 <jsp:include page="login.jsp"></jsp:include>
 
-<form action="passenger-services" method="post"  name="startForm">
 
+<div class="menu">
+<form action="passenger-services" method="post"  name="startForm">
 <button name="action"  value="passenger-services-action" onclick="submit ()">
     <spring:message code="start.page.forpassages.button" />
 </button>     <!--На  passangerservices.jsp-->
-
 </form>
+</div>
+
 </body>
 </html>

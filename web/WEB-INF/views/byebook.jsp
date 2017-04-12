@@ -15,16 +15,14 @@
 <html>
 <head>
     <title><spring:message code="byebook.page.title" /></title>
-    <!--link rel='stylesheet' type='text/css' href='/css/style.css'-->
+    <link rel='stylesheet' type='text/css' href="<c:url value="/resources/css/style.css"/> ">
 
 </head>
 <body>
 
-<span style="float: right">
-     <a href="?lang=ru"> <spring:message code="application.rusLocale" /></a>
-     <a href="?lang=en">  <spring:message code="application.enLocale" /></a>
 
-    </span>
+<jsp:include page="locales.jsp"></jsp:include>
+<jsp:include page="login.jsp"></jsp:include>
 
 
 <c:if test="${requestScope.errorRout!=null}">

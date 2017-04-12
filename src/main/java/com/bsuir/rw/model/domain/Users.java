@@ -1,9 +1,12 @@
 package com.bsuir.rw.model.domain;
 
+import net.bytebuddy.implementation.bind.annotation.Empty;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Pattern;
 
@@ -16,13 +19,17 @@ import java.util.Collection;
 public class Users {
     private int idUser;
 
+
     @NotBlank(message="Поле обязательно для заполнения")
+
     private String surname;
+
 
     @NotBlank(message="Поле обязательно для заполнения")
     private String name;
 
     private String lastname;
+
 
     @Pattern(regexp="^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$",message="Некорректное поле 'Телефон'")
     private String phone;

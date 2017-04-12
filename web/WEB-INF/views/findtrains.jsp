@@ -28,11 +28,10 @@
     </script>
 </head>
 <body>
-<span style="float: right">
-     <a href="?lang=ru"> <spring:message code="application.rusLocale" /></a>
-     <a href="?lang=en">  <spring:message code="application.enLocale" /></a>
 
-    </span>
+<jsp:include page="locales.jsp"></jsp:include>
+<jsp:include page="login.jsp"></jsp:include>
+
 <form method="post" action="trains-info" id="myForm">
 
     ${ sessionScope.trainParam.department }

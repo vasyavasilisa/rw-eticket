@@ -27,14 +27,12 @@ div.block{
     text-decoration: underline;
 }
 
-.auth{
+/*.auth{
     position:absolute;
     margin-top: 30px;
-    right: 20px;
-}
 
 
-
+}*/
 
 
 .necessar{
@@ -44,3 +42,25 @@ div.block{
 .error{
     color:red;
 }
+
+.authhref{
+   /* margin-top: 30px;*/
+    width:100%;
+    height: 40px;
+    background-color: lightblue;
+}
+
+
+.local{
+    width:100%;
+    height: 40px;
+    background-color: midnightblue;
+
+}
+
+.hrefloc{
+    color:white;
+}
+/*.menu{
+    margin-top: 60px;
+}*/

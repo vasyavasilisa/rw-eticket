@@ -11,15 +11,17 @@ public class CarriagesBean implements Serializable{
 
     private int idCarriage;
     private int number;
+    private String type;
     private int countAvailableseats;
 
     public CarriagesBean() {
 
     }
 
-    public CarriagesBean(int idCarriage, int number, int countAvailableseats) {
+    public CarriagesBean(int idCarriage, int number, String type, int countAvailableseats) {
         this.idCarriage = idCarriage;
         this.number = number;
+        this.type = type;
         this.countAvailableseats = countAvailableseats;
     }
 
@@ -51,6 +53,14 @@ public class CarriagesBean implements Serializable{
         this.countAvailableseats = countAvailableseats;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -60,7 +70,8 @@ public class CarriagesBean implements Serializable{
 
         if (idCarriage != that.idCarriage) return false;
         if (number != that.number) return false;
-        return countAvailableseats == that.countAvailableseats;
+        if (countAvailableseats != that.countAvailableseats) return false;
+        return type.equals(that.type);
 
     }
 
@@ -68,6 +79,7 @@ public class CarriagesBean implements Serializable{
     public int hashCode() {
         int result = idCarriage;
         result = 31 * result + number;
+        result = 31 * result + type.hashCode();
         result = 31 * result + countAvailableseats;
         return result;
     }
@@ -77,6 +89,7 @@ public class CarriagesBean implements Serializable{
         return "CarriagesBean{" +
                 "idCarriage=" + idCarriage +
                 ", number=" + number +
+                ", type='" + type + '\'' +
                 ", countAvailableseats=" + countAvailableseats +
                 '}';
     }

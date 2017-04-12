@@ -2,16 +2,15 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <html>
 <head>
     <title>Регистрация</title>
     <link rel='stylesheet' type='text/css' href="<c:url value="/resources/css/style.css"/> ">
 </head>
 <body>
-<span style="float: right">
-     <a href="?lang=ru"> <spring:message code="application.rusLocale" /></a>
-     <a href="?lang=en">  <spring:message code="application.enLocale" /></a>
-    </span>
+
+<jsp:include page="locales.jsp"></jsp:include>
 <jsp:include page="login.jsp"></jsp:include>
 
 <form:form method="post"  modelAttribute="user"  name="form_reg" action="registration">

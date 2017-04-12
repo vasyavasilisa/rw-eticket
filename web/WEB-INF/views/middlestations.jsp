@@ -12,13 +12,13 @@
     <html>
     <head>
         <title><spring:message code="middlestations.page.title"/></title>
+        <link rel='stylesheet' type='text/css' href="<c:url value="/resources/css/style.css"/> ">
     </head>
 <body>
-<span style="float: right">
-     <a href="?lang=ru"> <spring:message code="application.rusLocale" /></a>
-     <a href="?lang=en">  <spring:message code="application.enLocale" /></a>
 
-    </span>
+<jsp:include page="locales.jsp"></jsp:include>
+<jsp:include page="login.jsp"></jsp:include>
+
 <table>
     <th><spring:message code="middlestations.page.trainnumber.label"/></th><!--Номер поезда-->
     <th><spring:message code="middlestations.page.station.label"/></th><!--Станция-->
