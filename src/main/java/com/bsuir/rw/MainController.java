@@ -3,8 +3,12 @@ package com.bsuir.rw;
 /**
  * Created by USER on 09.04.2017.
  */
+import com.bsuir.rw.beans.User;
 import com.bsuir.rw.model.beans.TrainsBean;
+import com.bsuir.rw.model.domain.Users;
+import com.bsuir.rw.model.services.UserServices;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import com.bsuir.rw.beans.Train;
@@ -14,12 +18,14 @@ import com.bsuir.rw.model.beans.StationsOfTrainBean;
 import com.bsuir.rw.model.services.StationsOfTrainService;
 import com.bsuir.rw.model.services.TrainsService;
 
+//import javax.validation.Valid;
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
 
 @Controller
-@SessionAttributes({"trainParam", "trainId"})
+@SessionAttributes({"trainParam", "trainId"/*, "user"*/})
 public class MainController {
 
     private static final String SORT_PARAM="sort";
@@ -27,6 +33,11 @@ public class MainController {
     private static final String SORT_DEPARTURE_PARAM="sorttimedeparture";
     private static final String SET_SORT_TRAVEL_PARAM="sortTimeTravel";
     private static final String SET_SORT_DEPARTURE_PARAM="sortTimeDep";
+    private static final String AUTH_REGISTRATION_VAL="registration";
+    private static final String AUTH_LOGIN_VAL="login";
+    private static final String AUTH_LOGOUT_VAL="logout";
+
+    private static final String SET_SORT_DEPARTURE_VAL="sortTimeDep";
     private static final String DEPARTMENT_STATION_PARAM = "department";
     private static final String ARRIVE_STATION_PARAM = "arrive";
 
@@ -52,6 +63,10 @@ public class MainController {
         return "empty";
     }
 
+    /*@ModelAttribute("user")
+    public Users createUserRequest() {
+        return new Users();
+    }*/
 
 
     @RequestMapping(value = "/passenger-services", method = RequestMethod.POST)
@@ -205,6 +220,41 @@ public class MainController {
                                    @ModelAttribute("trainParam") Train train) {    /*Промежуточные или вагоны */
      return trainsSort(sort_param,date,train);
 
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ModelAndView auth(@RequestParam("auth") String auth) {
+        ModelAndView modelAndView = new ModelAndView();
+        if(auth.equals(AUTH_REGISTRATION_VAL)){
+            modelAndView.addObject("user",new Users());
+            modelAndView.setViewName("registration");
+            return modelAndView;
+        }
+        else if(auth.equals(AUTH_LOGIN_VAL)){
+            modelAndView.setViewName("login");
+            return modelAndView;
+        }
+         if(auth.equals(AUTH_LOGOUT_VAL)){
+            modelAndView.setViewName("logout");
+            return modelAndView;
+        }
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    public ModelAndView registration(@Valid @ModelAttribute("user") Users user, BindingResult bindingResult) {
+        ModelAndView modelAndView = new ModelAndView();
+        if(bindingResult.hasErrors()){
+            modelAndView.setViewName("registration");
+            return modelAndView;
+        }
+        UserServices service = new UserServices();
+        double balance=service.generateBalance();
+        user.setBalance(balance);
+       // user.setRole("0");
+        service.createUser(user);
+        modelAndView.setViewName("main");
+        return modelAndView;
     }
 
 

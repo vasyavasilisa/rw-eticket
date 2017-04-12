@@ -1,6 +1,12 @@
 package com.bsuir.rw.model.domain;
 
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
+import javax.validation.constraints.Null;
+import javax.validation.constraints.Pattern;
+
 import java.util.Collection;
 
 /**
@@ -9,16 +15,31 @@ import java.util.Collection;
 @Entity
 public class Users {
     private int idUser;
+
+    @NotBlank(message="Поле обязательно для заполнения")
     private String surname;
+
+    @NotBlank(message="Поле обязательно для заполнения")
     private String name;
+
     private String lastname;
+
+    @Pattern(regexp="^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$",message="Некорректное поле 'Телефон'")
     private String phone;
-    private String email;
+
+    @Pattern(regexp ="^([a-z0-9_-]+\\.)*[a-z0-9_-]+@[a-z0-9_-]+(\\.[a-z0-9_-]+)*\\.[a-z]{2,6}$",
+            message="Некорректное поле 'Адрес электронной почты'")
+        private String email;
     private String gender;
+
+    @NotBlank(message="Поле обязательно для заполнения")
     private String login;
+
+    @NotBlank(message="Поле обязательно для заполнения")
     private String password;
+
     private double balance;
-    private String role;
+    private  String role;
     private Collection<Feaadback> feaadbacksByIdUser;
     private Collection<Tickets> ticketsesByIdUser;
 
@@ -32,6 +53,8 @@ public class Users {
         this.idUser = idUser;
     }
 
+
+
     @Basic
     @Column(name = "surname", nullable = false, length = 255)
     public String getSurname() {
@@ -41,6 +64,7 @@ public class Users {
     public void setSurname(String surname) {
         this.surname = surname;
     }
+
 
     @Basic
     @Column(name = "name", nullable = false, length = 255)
@@ -62,6 +86,7 @@ public class Users {
         this.lastname = lastname;
     }
 
+
     @Basic
     @Column(name = "phone", nullable = false, length = 255)
     public String getPhone() {
@@ -71,6 +96,7 @@ public class Users {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
 
     @Basic
     @Column(name = "email", nullable = false, length = 255)
@@ -92,6 +118,7 @@ public class Users {
         this.gender = gender;
     }
 
+
     @Basic
     @Column(name = "login", nullable = false, length = 255)
     public String getLogin() {
@@ -101,6 +128,7 @@ public class Users {
     public void setLogin(String login) {
         this.login = login;
     }
+
 
     @Basic
     @Column(name = "password", nullable = false, length = 255)
@@ -123,7 +151,8 @@ public class Users {
     }
 
     @Basic
-    @Column(name = "role", nullable = false, length = 255)
+    @Column(name = "role", nullable = false, length = 255,insertable=false, updatable=false/*,columnDefinition = "String default '0'"*/)
+    @ColumnDefault("'0'")
     public String getRole() {
         return role;
     }

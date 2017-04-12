@@ -6,21 +6,26 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <html>
     <head>
-        <title>Промежуточные станции</title>
+        <title><spring:message code="middlestations.page.title"/></title>
     </head>
 <body>
+<span style="float: right">
+     <a href="?lang=ru"> <spring:message code="application.rusLocale" /></a>
+     <a href="?lang=en">  <spring:message code="application.enLocale" /></a>
 
+    </span>
 <table>
-    <th>Номер поезда</th>
-    <th>Станция</th>
-    <th>Время прибытия</th>
-    <th>Время отправления</th>
-    <th>Время стоянки</th>
-    <th>Расстояние</th>
+    <th><spring:message code="middlestations.page.trainnumber.label"/></th><!--Номер поезда-->
+    <th><spring:message code="middlestations.page.station.label"/></th><!--Станция-->
+    <th><spring:message code="middlestations.page.timearrive.label"/></th><!--Время прибытия-->
+    <th><spring:message code="middlestations.page.timedeparture.label"/></th><!--Время отправления-->
+    <th><spring:message code="middlestations.page.timestanding.label"/></th><!--Время стоянки-->
+    <th><spring:message code="middlestations.page.distance.label"/></th><!--Расстояние-->
     <c:forEach var="middlestations" items="${stations}" varStatus="status">
     <tr>
         <td> <c:out value="${ middlestations.numberTrain }" /></td>

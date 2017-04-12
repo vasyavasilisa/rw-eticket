@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -13,15 +14,23 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Главная страница системы продажи проездных документов - rw-tickets</title>
+    <title><spring:message code="start.page.title"/></title>
+    <link rel='stylesheet' type='text/css' href="<c:url value="/resources/css/style.css"/> ">
 </head>
 <body>
 
+<span style="float: right">
+     <a href="?lang=ru"> <spring:message code="application.rusLocale" /></a>
+    <a href="?lang=en">  <spring:message code="application.enLocale" /></a>
 
+    </span>
+
+<jsp:include page="login.jsp"></jsp:include>
 
 <form action="passenger-services" method="post"  name="startForm">
+
 <button name="action"  value="passenger-services-action" onclick="submit ()">
-  Пассажирские услуги
+    <spring:message code="start.page.forpassages.button" />
 </button>     <!--На  passangerservices.jsp-->
 
 </form>

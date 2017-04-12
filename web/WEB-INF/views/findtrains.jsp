@@ -6,13 +6,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <html>
 <head>
-    <title>Поезда</title>
+    <title><spring:message code="findtrains.page.title" /></title>
     <link rel='stylesheet' type='text/css' href="<c:url value="/resources/css/style.css"/> ">
     <script src="js/main.js"></script>
     <script>
@@ -27,6 +28,11 @@
     </script>
 </head>
 <body>
+<span style="float: right">
+     <a href="?lang=ru"> <spring:message code="application.rusLocale" /></a>
+     <a href="?lang=en">  <spring:message code="application.enLocale" /></a>
+
+    </span>
 <form method="post" action="trains-info" id="myForm">
 
     ${ sessionScope.trainParam.department }
@@ -36,12 +42,12 @@
         ${ sessionScope.trainParam.date }
 
     <table>
-        <th>Номер поезда</th>
-        <th>Маршрут</th>
-        <th>Время отправления</th>
-        <th>Время прибытия</th>
-        <th>Время в пути</th>
-        <th>Количество свободных мест</th>
+        <th><spring:message code="findtrains.page.numbertrain.label" /></th><!--Номер поезда-->
+        <th><spring:message code="findtrains.page.rout.label" /></th><!--Маршрут-->
+        <th><spring:message code="findtrains.page.timedep.label" /></th><!--Время отправления-->
+        <th><spring:message code="findtrains.page.timearr.label" /></th><!--Время прибытия-->
+        <th><spring:message code="findtrains.page.timetravel.label" /></th><!--Время ов пути-->
+        <th><spring:message code="findtrains.page.countseats.label" /></th><!--Количество свободных мест-->
         <c:forEach var="trains" items="${trains}" varStatus="status">
         <tr>
             <td>  <c:out value="${ trains.number }" /></td>
@@ -64,23 +70,23 @@
     <c:choose>
         <c:when test="${requestScope.checkbox=='sortTimeDep'}">
             <input type="radio"  name="sort"  value="sorttimetravel" onclick="javascript: submit()" >
-           Сортировать по времени в пути
+            <spring:message code="findtrains.page.sorttimetravel.label" />
             <input type="radio" name="sort" disabled value="sorttimedeparture" onclick="javascript: submit()" >
-            Сортировать по времени отправления
+            <spring:message code="findtrains.page.sorttimedep.label" />
         </c:when>
         <c:when test="${requestScope.checkbox=='sortTimeTravel'}">
             <input type="radio"  name="sort" disabled value="sorttimetravel" onclick="javascript: submit()" >
-           Сортировать по времени в пути
+            <spring:message code="findtrains.page.sorttimetravel.label" />
             <input type="radio" name="sort"  value="sorttimedeparture" onclick="javascript: submit()" >
-          Сортировать по времени отправления
+            <spring:message code="findtrains.page.sorttimedep.label" />
         </c:when>
     </c:choose>
     </c:when>
     <c:otherwise>
         <input type="radio"  name="sort"  value="sorttimetravel" onclick="javascript: submit()" >
-     Сортировать по времени в пути
+        <spring:message code="findtrains.page.sorttimetravel.label" />
         <input type="radio" name="sort"  value="sorttimedeparture" onclick="javascript: submit()" >
-     Сортировать по времени отправления
+        <spring:message code="findtrains.page.sorttimedep.label" />
     </c:otherwise>
 </c:choose>
 

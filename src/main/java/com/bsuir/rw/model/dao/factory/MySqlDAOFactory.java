@@ -1,10 +1,7 @@
 package com.bsuir.rw.model.dao.factory;
 
 
-import com.bsuir.rw.model.dao.StationsOfTrainDaoImpl;
-import com.bsuir.rw.model.dao.TrainsDao;
-import com.bsuir.rw.model.dao.TrainsDaoImpl;
-import com.bsuir.rw.model.dao.StationsOfTrainDao;
+import com.bsuir.rw.model.dao.*;
 
 /**
  * Created by USER on 03.04.2017.
@@ -25,4 +22,7 @@ public class MySqlDAOFactory extends DAOFactory {
         return new StationsOfTrainDaoImpl();
     }
 
+    public UsersDao getUsersDao() {
+        return new UserDaoImpl();
+    }
 }

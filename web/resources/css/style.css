@@ -26,3 +26,21 @@ div.block{
     color: #00f;
     text-decoration: underline;
 }
+
+.auth{
+    position:absolute;
+    margin-top: 30px;
+    right: 20px;
+}
+
+
+
+
+
+.necessar{
+    color:Maroon;
+}
+
+.error{
+    color:red;
+}

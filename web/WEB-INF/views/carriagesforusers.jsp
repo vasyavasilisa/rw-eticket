@@ -7,14 +7,19 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setBundle basename="msgs" var="msgs" />
 <html>
 <head>
-    <title>Выбор вагона</title>
+    <title><spring:message code="carriagesforusers.page.title" /></title>
 </head>
 <body>
+<span style="float: right">
+     <a href="?lang=ru"> <spring:message code="application.rusLocale" /></a>
+     <a href="?lang=en">  <spring:message code="application.enLocale" /></a>
 
+    </span>
 <form action = "/controller.html" method = "post" name="myFormCarriage" id="myFormCarriage">
     ${ sessionScope.trainParam.department }
     <br>
@@ -24,14 +29,16 @@
         <br>
     ${sessionScope.trainId}
     <table>
-        <th>Номер вагона </th>
-        <th>Количество свободных мест</th>
+        <th><spring:message code="carriagesforusers.page.carnum.label"/> </th><!--Номер вагона-->
+        <th><spring:message code="carriagesforusers.page.countsears.label"/> </th><!--количество свободных мест-->
 
         <c:forEach var="carriages" items="${requestScope.carriages}" varStatus="status">
         <tr>
             <td>  <c:out value="${carriages.number}" /></td>
             <td><c:out value="${ carriages.countAvailableseats }" /></td>
-            <td>  <button name="carriage" value="${carriages.idCarriage}" class ="href" value="${trains.idTrain}" onClick="document.getElementById('myFormCarriage').submit()">Выбрать</button></td>
+            <td>  <button name="carriage" value="${carriages.idCarriage}" class ="href" value="${trains.idTrain}" onClick="document.getElementById('myFormCarriage').submit()">
+            <spring:message code="carriagesforusers.page.choose.button"/>
+            </button></td>
             </c:forEach>
         </tr>
 
