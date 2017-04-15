@@ -1,9 +1,7 @@
 package com.bsuir.rw.model.dao.factory;
 
 
-import com.bsuir.rw.model.dao.StationsOfTrainDao;
-import com.bsuir.rw.model.dao.TrainsDao;
-import com.bsuir.rw.model.dao.UsersDao;
+import com.bsuir.rw.model.dao.*;
 
 /**
  * Created by USER on 03.04.2017.
@@ -15,6 +13,12 @@ public abstract class DAOFactory {
     public abstract StationsOfTrainDao getStationsOfTrainDao();
 
     public abstract UsersDao getUsersDao();
+
+    public abstract CarriageoftrainDao getCarriageostrainDao();
+
+    public abstract PlacesDao getPlacesDao();
+
+    public abstract TicketsDao getTicketsDao();
 
     public static DAOFactory getFactory() {
         return getFactory(StoradgeTypes.MySql);

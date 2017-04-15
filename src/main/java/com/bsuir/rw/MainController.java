@@ -4,6 +4,9 @@ package com.bsuir.rw;
  * Created by USER on 09.04.2017.
  */
 import com.bsuir.rw.model.beans.TrainsBean;
+import com.bsuir.rw.model.domain.Carriage;
+import com.bsuir.rw.model.domain.Carriageoftrain;
+import com.bsuir.rw.model.domain.Users;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +25,7 @@ import java.util.List;
 
 
 @Controller
-@SessionAttributes({"trainParam", "trainId"})
+@SessionAttributes({"trainParam", "trainId","user","carriage"})
 public class MainController {
 
     private static final String SORT_PARAM="sort";
@@ -54,10 +57,10 @@ public class MainController {
         return "empty";
     }
 
-    /*@ModelAttribute("user")
+    @ModelAttribute("user")
     public Users createUserRequest() {
         return new Users();
-    }*/
+    }
 
 ///
 @RequestMapping(value = "/passenger-services", method = RequestMethod.POST)
@@ -140,6 +143,7 @@ public String passengerServices() {
             beans =  service.getCarriagesForTrain(Integer.valueOf(id_train_for_carr));
             modelAndView.addObject("carriages",beans);
             modelAndView.addObject("trainId",id_train_for_carr);
+            modelAndView.addObject("carriage",new Carriageoftrain());
            // modelAndView.addObject("idTrain",id_train_for_carr);
             modelAndView.setViewName("carriagesforusers");
             return modelAndView;

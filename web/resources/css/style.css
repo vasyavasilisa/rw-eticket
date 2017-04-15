@@ -64,3 +64,8 @@ div.block{
 /*.menu{
     margin-top: 60px;
 }*/
+
+.train,.passangers {
+    width: 100px;	/* Размеры */ /* Цвет фона */
+    outline: 1px solid #000; /* Чёрная рамка */
+}

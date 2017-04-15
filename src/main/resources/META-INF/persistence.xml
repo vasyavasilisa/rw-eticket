@@ -6,7 +6,7 @@
     <persistence-unit name="bachelordebug" transaction-type="RESOURCE_LOCAL">
         <!-- <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider> -->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>com.bsuir.rw.model.domain.Places</class>
+        <!--class>com.bsuir.rw.model.domain.Places</class-->
         <class>com.bsuir.rw.model.domain.Carriageoftrain</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>

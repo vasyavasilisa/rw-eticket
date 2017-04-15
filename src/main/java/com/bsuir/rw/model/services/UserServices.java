@@ -4,8 +4,13 @@ package com.bsuir.rw.model.services;
 
 import com.bsuir.rw.model.dao.UsersDao;
 import com.bsuir.rw.model.dao.factory.DAOFactory;
+import com.bsuir.rw.model.domain.Tickets;
 import com.bsuir.rw.model.domain.Users;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -34,4 +39,64 @@ public class UserServices {
       Users entity=dao.findUser(user);
        return entity;
    }
+
+    public List<Tickets> getCompletedTrips(Users user,Date curDate){
+        Users entity=getUserByLoginPassword(user);
+        List<Tickets> result= new ArrayList<>();
+        for(Tickets ticket: entity.getTicketsesByIdUser()){
+            if(!ticket.getStatus().equals("возвращён")) {
+                String s=ticket.getDateDeparture();
+                SimpleDateFormat format = new SimpleDateFormat();
+                format.applyPattern("yyyy-MM-dd");
+                Date docDate=null;
+                try {
+                    docDate= format.parse(s);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                if(docDate.getTime()<curDate.getTime()){
+                    result.add(ticket);
+                }
+            }
+
+        }
+        return result;
+    }
+
+    public List<Tickets> getFutureTrips(Users user,Date curDate){
+        Users entity=getUserByLoginPassword(user);
+        List<Tickets> result= new ArrayList<>();
+        for(Tickets ticket: entity.getTicketsesByIdUser()){
+            if(!ticket.getStatus().equals("возвращён")) {
+                String s=ticket.getDateDeparture();
+                SimpleDateFormat format = new SimpleDateFormat();
+                format.applyPattern("yyyy-MM-dd");
+                Date docDate=null;
+                try {
+                    docDate= format.parse(s);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                if(docDate.getTime()>curDate.getTime()){
+                    result.add(ticket);
+                }
+            }
+
+        }
+        return result;
+    }
+
+    public List<Tickets> getCanceledTrips(Users user){
+        Users entity=getUserByLoginPassword(user);
+        List<Tickets> result= new ArrayList<>();
+        for(Tickets ticket: entity.getTicketsesByIdUser()){
+            if(ticket.getStatus().equals("возвращён")) {
+                result.add(ticket);
+            }
+
+        }
+        return result;
+    }
+
+
 }

@@ -187,6 +187,37 @@ public class TrainsDaoImpl implements TrainsDao{
 
     }
 
+    public TrainsBean loadParamForTicket(int id, String dep, String arr) {
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 
+        EntityManager entityManager = factory.createEntityManager();
+              List<Object[]> trains = entityManager.createNativeQuery(
+                "SELECT DISTINCT CONCAT('',(TIME(S1.datetimeOfDeparture))),CONCAT('',(TIME(S2.datetimeOfArrive))),trains.number"+
+                        " FROM fare "+
+                        "INNER JOIN places  ON places.idPlace=fare.idPlace "+
+                        "INNER JOIN trainRouts  ON trainRouts.idRout=fare.idRout "+
+                        "INNER JOIN trains ON trains.idTrain=trainRouts.idTrain "+
+                        "INNER JOIN stationsOfTrain S1 ON S1.idStationOfTrain=trainRouts .idDepartureStation "+
+                        "INNER JOIN stations SS1 ON SS1.idStation=S1.idStation "+
+                        "INNER JOIN stationsOfTrain S2 ON S2.idStationOfTrain=trainRouts .idArriveStation "+
+                        "INNER JOIN stations SS2 ON SS2.idStation=S2.idStation "+
+                        "WHERE trains.idTrain =:id AND  SS1.name = :name1 AND SS2.name= :name2 AND places.status='свободно'")
+                .setParameter( "id", id)
+                .setParameter("name1",dep)
+                .setParameter("name2",arr)
+                .getResultList();
 
+        TrainsBean bean= new TrainsBean();
+        for(Object[] entity : trains) {
+            String time1= (String)entity[0];
+            String time2= (String)entity[1];
+            String num_train= (String)entity[2];
+            bean.setTimeDeparture(time1);
+            bean.setTimeArrive(time2);
+            bean.setNumber(num_train);
+             }
+
+        return bean;
+
+    }
 }

@@ -28,8 +28,13 @@
 <form action="passenger-services" method="post"  name="startForm">
 <button name="action"  value="passenger-services-action" onclick="submit ()">
     <spring:message code="start.page.forpassages.button" />
-</button>     <!--На  passangerservices.jsp-->
+</button>
+    <!--На  passangerservices.jsp-->
 </form>
+
+    <form method="post"   action="private-office">
+        <input type = "submit" name = "Submit" value = "Личный кабинет" >
+    </form>
 </div>
 
 </body>

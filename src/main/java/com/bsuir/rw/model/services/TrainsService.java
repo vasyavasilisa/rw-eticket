@@ -44,5 +44,11 @@ public class TrainsService {
         return beans;
     }
 
+    public TrainsBean getParamForTicket(int id,String dep, String arr) {
+        TrainsDao dao = DAOFactory.getFactory().getTrainsDao();
+        TrainsBean bean = dao.loadParamForTicket(id,dep,arr);
+        return bean;
+    }
+
 
 }

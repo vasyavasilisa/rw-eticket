@@ -45,4 +45,8 @@ public class XmlTrainsDao implements TrainsDao{
     public List<Trains> loadInformationForTrain(int id) {
         return null;
     }
+
+    public TrainsBean loadParamForTicket(int id, String dep, String arr) {
+        return null;
+    }
 }

@@ -20,7 +20,7 @@
 <jsp:include page="locales.jsp"></jsp:include>
 <jsp:include page="login.jsp"></jsp:include>
 
-<form action = "/controller.html" method = "post" name="myFormCarriage" id="myFormCarriage">
+<form action = "places" method = "post" name="myFormCarriage" id="myFormCarriage">
     ${ sessionScope.trainParam.department }
     <br>
     ${ sessionScope.trainParam.arrive }
@@ -38,7 +38,7 @@
             <td>  <c:out value="${carriages.number}" /></td>
             <td>  <c:out value="${carriages.type}" /></td>
             <td><c:out value="${ carriages.countAvailableseats }" /></td>
-            <td>  <button name="carriage" value="${carriages.idCarriage}" class ="href" value="${trains.idTrain}" onClick="document.getElementById('myFormCarriage').submit()">
+            <td>  <button name="carriage" value="${carriages.idCarriage}" class ="href"  onClick="document.getElementById('myFormCarriage').submit()">
             <spring:message code="carriagesforusers.page.choose.button"/>
             </button></td>
             </c:forEach>

@@ -41,8 +41,6 @@ public class UserDaoImpl implements UsersDao{
         Session session = null;
         String log=ob.getLogin();
         String pass=ob.getPassword();
-        System.out.println(log);
-        System.out.println(pass);
        Users entity = new Users();
         try {
             session = HibernateSessionFactory.getSessionFactory().getCurrentSession();

@@ -26,4 +26,5 @@ public interface TrainsDao {
     public boolean isRoutExist(String date, String stationDep, String stationArr);
     public List<TrainsBean> loadTrainsOrderByTimeDep(String date, String stationDep, String stationArr);
     public List<Trains> loadInformationForTrain(int id);
+    public TrainsBean loadParamForTicket(int id,String dep, String arr);
 }

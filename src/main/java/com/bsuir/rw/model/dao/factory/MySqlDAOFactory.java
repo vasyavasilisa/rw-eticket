@@ -25,4 +25,17 @@ public class MySqlDAOFactory extends DAOFactory {
     public UsersDao getUsersDao() {
         return new UserDaoImpl();
     }
+
+    public CarriageoftrainDao getCarriageostrainDao() {
+
+            return new CarriageoftrainDaoImpl();
+    }
+
+    public PlacesDao getPlacesDao() {
+        return new PlacesDaoImpl();
+    }
+
+    public TicketsDao getTicketsDao() {
+        return new TicketsDaoImpl();
+    }
 }

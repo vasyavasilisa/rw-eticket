@@ -14,16 +14,16 @@ public class Tickets {
     private Integer idUser;
     private String ticketNumber;
     private String rout;
-    private Date dateDeparture;
-    private Time timeDeparture;
-    private Time timeArrive;
+    private String dateDeparture;
+    private String timeDeparture;
+    private String timeArrive;
     private String trainNumber;
     private int carriageNumber;
     private int placeNumber;
     private double price;
     private String status;
-    private Serializable datetimeCreation;
-    private Serializable datetimeCancel;
+    private String datetimeCreation;
+    private String datetimeCancel;
     private String passangerSurname;
     private String passangerName;
     private String passportNumber;
@@ -72,31 +72,31 @@ public class Tickets {
 
     @Basic
     @Column(name = "dateDeparture", nullable = false)
-    public Date getDateDeparture() {
+    public String getDateDeparture() {
         return dateDeparture;
     }
 
-    public void setDateDeparture(Date dateDeparture) {
+    public void setDateDeparture(String dateDeparture) {
         this.dateDeparture = dateDeparture;
     }
 
     @Basic
     @Column(name = "timeDeparture", nullable = false)
-    public Time getTimeDeparture() {
+    public String getTimeDeparture() {
         return timeDeparture;
     }
 
-    public void setTimeDeparture(Time timeDeparture) {
+    public void setTimeDeparture(String timeDeparture) {
         this.timeDeparture = timeDeparture;
     }
 
     @Basic
     @Column(name = "timeArrive", nullable = false)
-    public Time getTimeArrive() {
+    public String getTimeArrive() {
         return timeArrive;
     }
 
-    public void setTimeArrive(Time timeArrive) {
+    public void setTimeArrive(String timeArrive) {
         this.timeArrive = timeArrive;
     }
 
@@ -152,21 +152,21 @@ public class Tickets {
 
     @Basic
     @Column(name = "datetimeCreation", nullable = false)
-    public Serializable getDatetimeCreation() {
+    public String getDatetimeCreation() {
         return datetimeCreation;
     }
 
-    public void setDatetimeCreation(Serializable datetimeCreation) {
+    public void setDatetimeCreation(String datetimeCreation) {
         this.datetimeCreation = datetimeCreation;
     }
 
     @Basic
     @Column(name = "datetimeCancel", nullable = false)
-    public Serializable getDatetimeCancel() {
+    public String getDatetimeCancel() {
         return datetimeCancel;
     }
 
-    public void setDatetimeCancel(Serializable datetimeCancel) {
+    public void setDatetimeCancel(String datetimeCancel) {
         this.datetimeCancel = datetimeCancel;
     }
 

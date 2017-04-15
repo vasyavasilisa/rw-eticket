@@ -68,7 +68,8 @@ public class AuthController {
         user.setBalance(balance);
         // user.setRole("0");
         service.createUser(user);
-        modelAndView.addObject("user",user);
+        Users createdUser=service.getUserByLoginPassword(user);
+        modelAndView.addObject("user",createdUser);
         modelAndView.setViewName("main");
         return modelAndView;
     }
