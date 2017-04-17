@@ -17,7 +17,7 @@ import java.util.List;
 
 
 @Controller
-@SessionAttributes({"user"})
+@SessionAttributes({"user","trainParam"})
 public class AuthController {
 
 

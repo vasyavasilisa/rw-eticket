@@ -59,6 +59,7 @@ public class CarriageoftrainDaoImpl implements CarriageoftrainDao{
 
         EntityManager entityManager = factory.createEntityManager();
         List<PlacesBean> result = new ArrayList<PlacesBean>();
+        String stat="свободно";
         List<Object[]> places = entityManager.createNativeQuery(
                 "SELECT DISTINCT places.idPlace,places.type,places.status,places.number,fare.price" +
                         " FROM passage" +
@@ -71,11 +72,12 @@ public class CarriageoftrainDaoImpl implements CarriageoftrainDao{
                         " INNER JOIN trains ON trains.idTrain=trainRouts.idTrain\n" +
                         " INNER JOIN places ON places.idPlace=fare.idPlace\n" +
                         " INNER JOIN carriageOfTrain ON carriageOfTrain.idCarriageOfTrain=places.idCarriage\n" +
-                        " WHERE SS1.name=:departure AND SS2.name=:arrive AND trains.idTrain=:idTrain AND carriageOfTrain.idCarriageOfTrain=:idCarriage")
+                        " WHERE SS1.name=:departure AND SS2.name=:arrive AND trains.idTrain=:idTrain AND carriageOfTrain.idCarriageOfTrain=:idCarriage AND places.status=:status")
                 .setParameter("departure", departure)
                 .setParameter("arrive", arrive)
                 .setParameter("idTrain", idTrain)
                 .setParameter("idCarriage",idCarriage)
+                .setParameter("status",stat)
                 .getResultList();
 
         for (Object[] entity : places) {

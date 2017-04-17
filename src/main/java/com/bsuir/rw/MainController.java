@@ -7,6 +7,7 @@ import com.bsuir.rw.model.beans.TrainsBean;
 import com.bsuir.rw.model.domain.Carriage;
 import com.bsuir.rw.model.domain.Carriageoftrain;
 import com.bsuir.rw.model.domain.Users;
+import com.bsuir.rw.model.services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -118,6 +119,40 @@ public String passengerServices() {
 
       return  findtrains(train);
     }
+
+    @RequestMapping(value = "/findtrains-from-start", method = RequestMethod.POST)
+    public ModelAndView findtrainsFromStart(@ModelAttribute("trainParam") Train train/*,@ModelAttribute("trainInfo") TrainInfo trainInfo*/){
+
+        List<TrainsBean> arrayTrains = new ArrayList<TrainsBean>();
+        TrainsService service= new TrainsService();
+        arrayTrains= service.getAllTrainsByDateStations(train.getDate(),train.getDepartment(),train.getArrive());
+        ModelAndView modelAndView = new ModelAndView();
+        if (arrayTrains.isEmpty()) {
+            boolean isExistRout = service.isRoutExist(train.getDate(),train.getDepartment(),train.getArrive());
+            if (!isExistRout) {//////////////////////Не найден маршрут
+                modelAndView.addObject("errorRout", ERR_ROUT);
+
+            } else {////////////////////////////Не найдена дата
+                modelAndView.addObject("errorRout", ERR_DATE);
+            }
+            modelAndView.addObject("trainParam",train);
+            modelAndView.setViewName("main");
+            return modelAndView;
+        }
+        else {
+       /* modelAndView.addObject("trainInfo", new TrainInfo());*/
+            modelAndView.addObject("trains", arrayTrains);
+            modelAndView.setViewName("findtrains");
+            return modelAndView;
+        }
+    }
+
+    @RequestMapping(value = "/findtrains-from-start", method = RequestMethod.GET)
+    public ModelAndView findtrainsFromStartGet(@ModelAttribute("trainParam") Train train/*,@ModelAttribute("trainInfo") TrainInfo trainInfo*/){
+
+        return findtrainsFromStart(train);
+    }
+
 
     ////////////////////////////////////////////////////////////////
 

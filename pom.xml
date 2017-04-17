@@ -6,7 +6,11 @@
 
     <groupId>com.spring</groupId>
     <artifactId>rw-eticket</artifactId>
+    <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
+
+    <name>rw-tickets Maven Webapp</name>
+    <url>http://maven.apache.org</url>
 
     <properties>
         <spring-framework-version>4.3.7.RELEASE</spring-framework-version>
@@ -119,5 +123,28 @@
 
 
     </dependencies>
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
+   <plugin>
+
+       <groupId>org.apache.maven.plugins</groupId>
+       <artifactId>maven-war-plugin</artifactId>
+       <version>3.0.0</version>
+       <configuration>
+           <packagingExcludes>WEB-INF/web.xml</packagingExcludes>
+       </configuration>
+   </plugin>
+        </plugins>
+    </build>
 
 </project>

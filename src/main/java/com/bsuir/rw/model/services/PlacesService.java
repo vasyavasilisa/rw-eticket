@@ -28,5 +28,17 @@ public class PlacesService {
         return convertToPlacesBean(entity);
     }
 
+    public Places getPlaceEntityById(int id) {
+        PlacesDao dao = DAOFactory.getFactory().getPlacesDao();
+        Places entity = dao.loadPlaceById(id);
+        return entity;
+    }
+
+    public void updatePlace(Places entity) {
+        PlacesDao dao = DAOFactory.getFactory().getPlacesDao();
+        dao.update(entity);
+
+    }
+
 
 }

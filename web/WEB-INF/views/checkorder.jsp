@@ -7,25 +7,68 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <html>
 <head>
-    <title>Проверка реквизитов заказа</title>
+    <title><spring:message code="checkorder.page.title" /></title>
+    <link rel='stylesheet' type='text/css' href="<c:url value="/resources/css/style.css"/> ">
 </head>
+
+
+<body>
 
 <jsp:include page="locales.jsp"></jsp:include>
 <jsp:include page="login.jsp"></jsp:include>
 
-<body>
+<div class="menu">
+    <form action="passenger-services" method="post"  name="startForm">
+        <button name="action"  value="passenger-services-action" onclick="submit ()">
+            <spring:message code="start.page.forpassages.button" />
+        </button>
+        <!--На  passangerservices.jsp-->
+    </form>
+    <form method="post"   action="private-office">
+        <input type = "submit" name = "Submit" value = " <spring:message code="start.page.account.button" />" >
+    </form>
+    <form method="post"   action="about-us"><!--О нас-->
+        <input type = "submit" name = "Submit" value = " <spring:message code="start.page.aboutUs.button" />" >
+    </form>
+    <form method="post"   action="feedbacks"><!--Отзывы -->
+        <input type = "submit" name = "Submit" value = " <spring:message code="start.page.feedbacks.button" />" >
+    </form>
+</div>
+
+<div class="submenu">
+    <div class="subbox">
+        <div class="text" ><a href="#" ><spring:message code="start.page.submenu.rout" /></a></div >
+    </div>
+    <div class="subbox" >
+        <div class="text" ><a href="#" ><spring:message code="start.page.submenu.train" /></a></div>
+    </div >
+    <div class="subbox">
+        <div class="text" ><a href="#" ><spring:message code="start.page.submenu.carriage" /></a></div>
+    </div >
+    <div class="subbox">
+        <div class="text" ><a href="#" ><spring:message code="start.page.submenu.passanger" /></a></div>
+    </div >
+    <div class="cursubbox">
+        <div class="text" ><a href="#" ><spring:message code="start.page.submenu.confirm" /></a></div>
+    </div >
+    <div class="subbox">
+        <div class="text"> <a href="#" ><spring:message code="start.page.submenu.order" /></a></div>
+    </div >
+</div>
+
 <form method="post" action="confirmorder" id="myForm">
 <div class="train">
-<h3>Проверка реквизитов поездки</h3>
+<h3><spring:message code="checkorder.page.checkRecvisits.label" /></h3>
     <table>
-    <tr><td><strong>Поезд:</strong></td></td> <td>  <c:out value="${ requestScope.singleTicket.trainNumber }" /></td></tr>
-    <tr><td><strong>Маршрут:</strong></td><td>  <c:out value="${ requestScope.singleTicket.rout }" /></td></tr>
-    <tr><td><strong>Отправление:</strong></td><td> <c:out value="${ requestScope.singleTicket.dateDeparture }"  />&nbsp;<c:out value="${ requestScope.singleTicket.timeDeparture }"/></td></tr>
-    <tr><td><strong>Прибытие:</strong></td><td><c:out value="${ requestScope.singleTicket.timeArrive }"  /></td></tr>
-    <tr><td><strong>Номер вагона:</strong></td><td><c:out value="${ requestScope.singleTicket.carriageNumber }"  /></td></tr>
-<tr><td><strong>Места:</strong></td><td>
+    <tr><td><strong><spring:message code="checkorder.page.train.label" />:</strong></td></td> <td>  <c:out value="${ requestScope.singleTicket.trainNumber }" /></td></tr>
+    <tr><td><strong><spring:message code="checkorder.page.rout.label" />:</strong></td><td>  <c:out value="${ requestScope.singleTicket.rout }" /></td></tr>
+    <tr><td><strong><spring:message code="checkorder.page.departure.label" />:</strong></td><td> <c:out value="${ requestScope.singleTicket.dateDeparture }"  />&nbsp;<c:out value="${ requestScope.singleTicket.timeDeparture }"/></td></tr>
+    <tr><td><strong><spring:message code="checkorder.page.arrive.label" />:</strong></td><td><c:out value="${ requestScope.singleTicket.timeArrive }"  /></td></tr>
+    <tr><td><strong><spring:message code="checkorder.page.carriage.label" />:</strong></td><td><c:out value="${ requestScope.singleTicket.carriageNumber }"  /></td></tr>
+<tr><td><strong><spring:message code="checkorder.page.places.label" />:</strong></td><td>
 <c:forEach var="resultTickets" items="${resultTickets}" varStatus="status">
     <c:out value="${ resultTickets.placeNumber}" />&nbsp;
     </c:forEach>
@@ -33,12 +76,12 @@
 </div>
 
 <div class="passangers">
-<h3>Информация о пассажирах</h3>
+<h3><spring:message code="checkorder.page.passangerInfo.label" /></h3>
     <table>
-       <th>Пассажир</th>
-        <th>№ Паспорта</th>
-        <th>К оплате</th>
-        <th>Валюта</th>
+       <th><spring:message code="checkorder.page.passanger.label" /></th>
+        <th><spring:message code="checkorder.page.passport.label" /></th>
+        <th><spring:message code="checkorder.page.price.label" /></th>
+        <th><spring:message code="checkorder.page.currency.label" /></th>
     <c:forEach var="resultTickets" items="${resultTickets}" varStatus="status">
     <tr>
         <td>  <c:out value="${ resultTickets.passangerSurname }" />&nbsp; <c:out value="${ resultTickets.passangerName }" /></td>
@@ -50,7 +93,13 @@
 </table>
 </div>
 
-<input type = "submit" name = "Submit" value = "Подтвердить заказ">
+<input type = "submit" name = "Submit" value = "<spring:message code="checkorder.page.confirmOrder.button" />">
     </form>
+
+
+<form action="places" method="post">
+    <input type="hidden" name="carriage" value="${sessionScope.carriageId}">
+<input type = "submit" name = "Submit" value = "<spring:message code="checkorder.page.back.button" />">
+</form>
 </body>
 </html>

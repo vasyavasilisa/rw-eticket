@@ -1,5 +1,7 @@
 package com.bsuir.rw.model.utils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -12,9 +14,27 @@ public final class DateUtil {
 
     public static Date changeDateByAddDays(int days,Date curDate){
         Calendar instance = Calendar.getInstance();
-        instance.setTime(curDate); //устанавливаем дату, с которой будет производить операции
-        instance.add(Calendar.DAY_OF_MONTH, days);// прибавляем 3 дня к установленной дате
-        Date newDate = instance.getTime(); //
+        instance.setTime(curDate);
+        instance.add(Calendar.DAY_OF_MONTH, days);
+        Date newDate = instance.getTime();
         return newDate;
+    }
+
+    public static Date converStringToDate(String date){
+        SimpleDateFormat format = new SimpleDateFormat();
+        format.applyPattern("yyyy-MM-dd");
+        Date docDate=null;
+        try {
+            docDate= format.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return  docDate;
+    }
+
+    public static boolean isPassed(Date date){
+        Date curDate= new Date();
+        return date.getTime()<curDate.getTime();
     }
 }

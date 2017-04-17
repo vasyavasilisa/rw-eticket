@@ -7,9 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <html>
 <head>
-    <title>Личный кабинет</title>
+    <title><spring:message code="privateOffice.page.title" /></title>
     <link rel='stylesheet' type='text/css' href="<c:url value="/resources/css/style.css"/> ">
 </head>
 <body>
@@ -17,23 +18,50 @@
 <jsp:include page="login.jsp"></jsp:include>
 
 
+<div class="menu">
+    <form action="passenger-services" method="post"  name="startForm">
+        <button name="action"  value="passenger-services-action" onclick="submit ()">
+            <spring:message code="start.page.forpassages.button" />
+        </button>
+        <!--На  passangerservices.jsp-->
+    </form>
+
+    <form method="post"   action="private-office">
+        <input type = "submit" name = "Submit" value = " <spring:message code="start.page.account.button" />" >
+    </form>
+
+
+
+    <form method="post"   action="about-us"><!--О нас-->
+        <input type = "submit" name = "Submit" value = " <spring:message code="start.page.aboutUs.button" />" >
+    </form>
+</div>
+
+
+<form method="post"   action="feedbacks"><!--Отзывы -->
+    <input type = "submit" name = "Submit" value = " <spring:message code="start.page.feedbacks.button" />" >
+</form>
+</div>
+
+
+
 <form method="post" action="future-trips" name="futuretrips">
-    <input type = "submit" name = "Submit" value = "Предстоящие поездки" >
+    <input type = "submit" name = "Submit" value = "<spring:message code="privateOffice.page.futureTrips.button" />" >
     </form>
 
     <form method="post" action="canceled-orders" name="canceledtrips">
-        <input type = "submit" name = "Submit" value = "Возвращённые заказы" >
+        <input type = "submit" name = "Submit" value = "<spring:message code="privateOffice.page.canceledTrips.button" />" >
         </form>
-<h3>Совершённые поездки</h3>
+<h3><spring:message code="privateOffice.page.completedTrips.label" /></h3>
 <c:if test="${not empty completedTrips}">
  <table>
-     <th>№ Заказа</th>
-     <th>Дата/Время заказа</th>
-     <th>Дата/Время поездки</th>
-     <th>Маршрут</th>
-     <th>№ Поезда</th>
-     <th>Стоимость(BYN)</th>
-     <th>Состояние заказа</th>
+     <th><spring:message code="privateOffice.page.orderNumber.label" /></th>
+     <th><spring:message code="privateOffice.page.dateTimeOrder.label" /></th>
+     <th><spring:message code="privateOffice.page.dateTimeTrip.label" /></th>
+     <th><spring:message code="privateOffice.page.rout.label" /></th>
+     <th><spring:message code="privateOffice.page.trainNumber.label" /></th>
+     <th><spring:message code="privateOffice.page.price.label" /></th>
+     <th><spring:message code="privateOffice.page.orderStatus.label" /></th>
 
 <c:forEach var="completedTrips" items="${completedTrips}" varStatus="status">
     <tr>
@@ -50,7 +78,7 @@
     </table>
 </c:if>
 <c:if test="${empty completedTrips}">
-    <h3>Нет информации по совершённым поездкам</h3>
+    <h3><spring:message code="privateOffice.page.onoInfo.label" /></h3>
 </c:if>
 </body>
 </html>

@@ -24,7 +24,58 @@
 <jsp:include page="locales.jsp"></jsp:include>
 <jsp:include page="login.jsp"></jsp:include>
 
+<div class="menu">
+    <form action="passenger-services" method="post"  name="startForm">
+        <button name="action"  value="passenger-services-action" onclick="submit ()">
+            <spring:message code="start.page.forpassages.button" />
+        </button>
+        <!--На  passangerservices.jsp-->
+    </form>
 
+    <form method="post"   action="private-office">
+        <input type = "submit" name = "Submit" value = " <spring:message code="start.page.account.button" />" >
+    </form>
+
+
+
+    <form method="post"   action="about-us"><!--О нас-->
+        <input type = "submit" name = "Submit" value = " <spring:message code="start.page.aboutUs.button" />" >
+    </form>
+
+    <form method="post"   action="feedbacks"><!--Отзывы -->
+        <input type = "submit" name = "Submit" value = " <spring:message code="start.page.feedbacks.button" />" >
+    </form>
+</div>
+
+
+<form method="post"   action="feedbacks"><!--Отзывы -->
+    <input type = "submit" name = "Submit" value = " <spring:message code="start.page.feedbacks.button" />" >
+</form>
+</div>
+
+<div class="submenu">
+        <div class="cursubbox">
+            <div class="text" ><a href="#" ><spring:message code="start.page.submenu.rout" />
+            </a></div >
+        </div>
+            <div class="subbox" >
+                <div class="text" ><a href="#" ><spring:message code="start.page.submenu.train" /></a></div>
+        </div >
+        <div class="subbox">
+                <div class="text" ><a href="#" ><spring:message code="start.page.submenu.carriage" /></a></div>
+        </div >
+    <div class="subbox">
+        <div class="text" ><a href="#" ><spring:message code="start.page.submenu.passanger" /></a></div>
+    </div >
+    <div class="subbox">
+        <div class="text" ><a href="#" ><spring:message code="start.page.submenu.confirm" /></a></div>
+    </div >
+
+    <div class="subbox">
+        <div class="text"> <a href="#" ><spring:message code="start.page.submenu.order" /></a></div>
+    </div >
+</div>
+<br/>
 <c:if test="${requestScope.errorRout!=null}">
    <div id="error_message">
     ${requestScope.errorRout}

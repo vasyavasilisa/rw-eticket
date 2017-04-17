@@ -7,41 +7,66 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <html>
 <head>
-    <title>Предстоящие поездки</title>
+    <title><spring:message code="futuretrips.page.title" /></title>
     <link rel='stylesheet' type='text/css' href="<c:url value="/resources/css/style.css"/> ">
 </head>
 <body>
 <jsp:include page="locales.jsp"></jsp:include>
 <jsp:include page="login.jsp"></jsp:include>
 
+<div class="menu">
+    <form action="passenger-services" method="post"  name="startForm">
+        <button name="action"  value="passenger-services-action" onclick="submit ()">
+            <spring:message code="start.page.forpassages.button" />
+        </button>
+        <!--На  passangerservices.jsp-->
+    </form>
+
+    <form method="post"   action="private-office">
+        <input type = "submit" name = "Submit" value = " <spring:message code="start.page.account.button" />" >
+    </form>
+
+
+
+    <form method="post"   action="about-us"><!--О нас-->
+        <input type = "submit" name = "Submit" value = " <spring:message code="start.page.aboutUs.button" />" >
+    </form>
+
+    <form method="post"   action="feedbacks"><!--Отзывы -->
+        <input type = "submit" name = "Submit" value = " <spring:message code="start.page.feedbacks.button" />" >
+    </form>
+</div>
+
 
 <form method="post" action="private-office" name="futuretrips">
-    <input type = "submit" name = "Submit" value = "Совершённые поездки" >
+    <input type = "submit" name = "Submit" value = "<spring:message code="futuretrips.page.completedTrips.button" />" >
 </form>
 
 <form method="post" action="canceled-orders" name="canceledtrips">
-    <input type = "submit" name = "Submit" value = "Возвращённые заказы" >
+    <input type = "submit" name = "Submit" value = "<spring:message code="futuretrips.page.canceledTrips.button" />" >
 </form>
 
 <form method="post"   action="cancel-order" id="formForCancel">
-<h3>Предстоящие поездки</h3>
+<h3><spring:message code="futuretrips.page.title" /></h3>
 <c:if test="${not empty futureTrips}">
     <table>
-        <th>№ Заказа</th>
-        <th>Дата/Время заказа</th>
-        <th>Дата/Время поездки</th>
-        <th>Дата/Время отмены заказа</th>
-        <th>Маршрут</th>
-        <th>№ Поезда</th>
-        <th>№ Вагона</th>
-        <th>№ Места</th>
-        <th>Стоимость(BYN)</th>
-        <th>Фамилия</th>
-        <th>Имя</th>
-        <th>Состояние заказа</th>
+        <th><spring:message code="futuretrips.page.orderNumber.label" /></th>
+        <th><spring:message code="futuretrips.page.dateTimeOrder.label" /></th>
+        <th><spring:message code="futuretrips.page.dateTimeTrip.label" /></th>
+        <th><spring:message code="futuretrips.page.dateTimeCancel.label" /></th>
+        <th><spring:message code="futuretrips.page.rout.label" /></th>
+        <th><spring:message code="futuretrips.page.trainNumber.label" /></th>
+        <th><spring:message code="futuretrips.page.carNumber.label" /></th>
+        <th><spring:message code="futuretrips.page.placeNumber.label" /></th>
+        <th><spring:message code="futuretrips.page.price.label" /></th>
+        <th><spring:message code="futuretrips.page.surname.label" /></th>
+        <th><spring:message code="futuretrips.page.name.label" /></th>
+        <th><spring:message code="futuretrips.page.orderStatus.label" /></th>
+        <th><spring:message code="futuretrips.page.title" /></th>
 
         <c:forEach var="futureTrips" items="${futureTrips}" varStatus="status">
             <tr>
@@ -58,14 +83,14 @@
                 <td><c:out value="${ futureTrips.passangerName}" /></td>
                 <td><c:out value="${ futureTrips.status}" /></td>
                 <td> <button name="cancel" value="${futureTrips.idTicket}"  onClick="document.getElementById('formForCancel').submit()">
-                    Отменить заказ
+                    <spring:message code="futuretrips.page.cancelOrder.button" />
                 </button> </td>
             </tr>
         </c:forEach>
     </table>
 </c:if>
 <c:if test="${empty futureTrips}">
-    <h3>Нет информации по предстоящим поездкам</h3>
+    <h3> <spring:message code="futuretrips.page.noInfo.label" /></h3>
 </c:if>
 </form>
 </body>

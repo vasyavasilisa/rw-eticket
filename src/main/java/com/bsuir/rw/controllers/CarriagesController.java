@@ -62,6 +62,7 @@ public class CarriagesController {
 
 List<PlacesBean> places=service.getPlacesForCarriage(Integer.valueOf(idCarriage),Integer.valueOf(trainId),
         train.getDepartment(),train.getArrive());
+            modelAndView.addObject("carriageId", idCarriage);
             modelAndView.addObject("carriage", entity);
             modelAndView.addObject("places", places);
             modelAndView.setViewName("places");

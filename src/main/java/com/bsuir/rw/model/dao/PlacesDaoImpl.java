@@ -18,7 +18,17 @@ public class PlacesDaoImpl implements PlacesDao {
     }
 
     public void update(Places ob) {
+        Session session = null;
+        try {
+            session = HibernateSessionFactory.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+            session.update(ob);
+            session.getTransaction().commit();
 
+        } catch (HibernateException e) {
+            e.printStackTrace();
+
+        }
     }
 
     public void delete(Places ob) {

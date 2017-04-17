@@ -9,6 +9,7 @@ import com.bsuir.rw.model.domain.Places;
 import com.bsuir.rw.model.domain.Tickets;
 import com.bsuir.rw.model.domain.Users;
 import com.bsuir.rw.model.services.CarriageoftrainService;
+import com.bsuir.rw.model.services.PlacesService;
 import com.bsuir.rw.model.services.TicketService;
 import com.bsuir.rw.model.services.TrainsService;
 import com.bsuir.rw.model.utils.DateUtil;
@@ -45,8 +46,10 @@ public class PlacesController {
                              @SessionAttribute("carriage") Carriageoftrain car,
                                 @SessionAttribute("trainId") String trainId,@RequestParam("place") String[] paramPlace,
                                 @RequestParam("surname") String[] surname, @RequestParam("name") String[] name,
-                                @RequestParam("passport") String[] passport, @RequestParam("count") int count) {
+                                @RequestParam("passport") String[] passport, @RequestParam("count") int count,
+                                @RequestParam(value="bye",required = false) String bye, @RequestParam(value="book", required = false)String book ) {
         TrainsService serv=new TrainsService();
+        PlacesService placesservice= new PlacesService();
         TrainsBean bean=serv.getParamForTicket(Integer.valueOf(trainId),train.getDepartment(),train.getArrive());
         ModelAndView modelAndView = new ModelAndView();
         TicketService service= new TicketService();
@@ -71,7 +74,18 @@ public class PlacesController {
                 tickets.setCarriageNumber(car.getNumber());
                 tickets.setPlaceNumber(placeNumber);
                 tickets.setPrice(cost);
+            if(bye!=null) {
                 tickets.setStatus("оплачен");
+                Places place=placesservice.getPlaceEntityById(idPlace);
+                place.setStatus("занято");
+                placesservice.updatePlace(place);
+            }
+            else {
+                tickets.setStatus("бронь");
+                Places place=placesservice.getPlaceEntityById(idPlace);
+                place.setStatus("забронировано");
+                placesservice.updatePlace(place);
+            }
                  Date curDate = new Date();
                 SimpleDateFormat formatForDateNow = new SimpleDateFormat("yyyyMMddhhmmss");
                 tickets.setDatetimeCreation(formatForDateNow.format(curDate));
