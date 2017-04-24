@@ -12,8 +12,7 @@ import com.bsuir.rw.model.services.CarriageoftrainService;
 import com.bsuir.rw.model.services.PlacesService;
 import com.bsuir.rw.model.services.TicketService;
 import com.bsuir.rw.model.services.TrainsService;
-import com.bsuir.rw.model.utils.DateUtil;
-import com.bsuir.rw.model.utils.HibernateSessionFactory;
+import com.bsuir.rw.model.utils.*;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.stereotype.Controller;
@@ -89,7 +88,11 @@ public class PlacesController {
                  Date curDate = new Date();
                 SimpleDateFormat formatForDateNow = new SimpleDateFormat("yyyyMMddhhmmss");
                 tickets.setDatetimeCreation(formatForDateNow.format(curDate));
-                Date newDate = DateUtil.changeDateByAddDays(7,curDate); // получаем измененную дату
+
+            Context context = new Context(new DateByAddDays());
+            Date newDate = context.returnDate(7,curDate,ticket_number);
+
+               // Date newDate = DateUtil.changeDateByAddDays(7,curDate,ticket_number); // получаем измененную дату
                 tickets.setDatetimeCancel(formatForDateNow.format(newDate));
                 tickets.setPassangerSurname(surname[i]);
                 tickets.setPassangerName(name[i]);

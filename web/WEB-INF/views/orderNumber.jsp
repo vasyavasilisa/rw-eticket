@@ -18,23 +18,41 @@
 <jsp:include page="locales.jsp"></jsp:include>
 <jsp:include page="login.jsp"></jsp:include>
 
-<div class="menu">
-    <form action="passenger-services" method="post"  name="startForm">
-        <button name="action"  value="passenger-services-action" onclick="submit ()">
-            <spring:message code="start.page.forpassages.button" />
-        </button>
-        <!--На  passangerservices.jsp-->
-    </form>
-    <form method="post"   action="private-office">
-        <input type = "submit" name = "Submit" value = " <spring:message code="start.page.account.button" />" >
-    </form>
-    <form method="post"   action="about-us"><!--О нас-->
-        <input type = "submit" name = "Submit" value = " <spring:message code="start.page.aboutUs.button" />" >
-    </form>
-    <form method="post"   action="feedbacks"><!--Отзывы -->
-        <input type = "submit" name = "Submit" value = " <spring:message code="start.page.feedbacks.button" />" >
-    </form>
-</div>
+<ul id="breadcrumbs-one"><!-- Меню-->
+    <li>   <form action="main" method="post"  name="startForm">
+        <button> <spring:message code="start.page.main.button" /></button>
+    </form></li>
+
+    <li>
+        <form action="passenger-services" method="post"  name="startForm">
+            <button name="action" class="current" value="passenger-services-action" onclick="submit ()">
+                <spring:message code="start.page.forpassages.button" />
+            </button>
+            <!--На  passangerservices.jsp-->
+        </form>
+    </li>
+    <li>
+        <form method="post"   action="private-office">
+            <button   name = "Submit" onclick="submit ()" value = "">
+                <spring:message code="start.page.account.button" />
+            </button>
+        </form>
+    </li>
+    <li>
+        <form method="post"   action="about-us"><!--О нас-->
+            <button name = "Submit"  onclick="submit ()" value = "" >
+                <spring:message code="start.page.aboutUs.button" />
+            </button>
+        </form>
+    </li>
+    <li>
+        <form method="post"   action="feedbacks"><!--Отзывы -->
+            <button name = "Submit"  onclick="submit ()" value = "" >
+                <spring:message code="start.page.feedbacks.button" />
+            </button>
+        </form>
+    </li>
+</ul>
 
 <div class="submenu">
     <div class="subbox">

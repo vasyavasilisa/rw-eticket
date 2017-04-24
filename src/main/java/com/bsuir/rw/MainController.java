@@ -47,6 +47,11 @@ public class MainController {
         return "main";
     }
 
+    @RequestMapping(value = "/main", method = RequestMethod.POST)
+    public String homepage() {
+        return "main";
+    }
+
     @ModelAttribute("trainParam")
     public Train createTrainRequest() {
         return new Train();

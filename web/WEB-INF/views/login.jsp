@@ -30,3 +30,8 @@
     </c:choose>
 </form>
 </div>
+
+<div class="logotype">
+<img src="<c:url value="/resources/images/logoready2.png" />" alt="Картинка">
+    <span class="logosign">  <spring:message code="login.page.logosign" /></span>
+</div>
