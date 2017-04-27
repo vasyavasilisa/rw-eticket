@@ -17,6 +17,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title><spring:message code="start.page.title"/></title>
     <link rel='stylesheet' type='text/css' href="<c:url value="/resources/css/style.css"/> ">
+    <script src="<c:url value="/resources/js/script.js"/>"></script>
 </head>
 <body>
 
@@ -62,14 +63,22 @@
         </button>
 </form>
     </li>
+
 </ul>
+<form method="post" action="show-video" id="video">
+    <img src="<c:url value="/resources/images/tv.png" />"> &nbsp;
+    <button name="video" class ="href"  onClick="document.getElementById('video').submit()" > <spring:message code="start.page.video.ref" /></button>
+</form>
 
 
-
+<br/>
+<br/>
 <form:form method="post"  modelAttribute="trainParam" action="findtrains-from-start">
+    <c:if test="${ not empty requestScope.errorRout}">
     <div class="error">
-            ${requestScope.errorRout}
+        <img src="<c:url value="/resources/images/attention_login.png" />"alt="Картинка">&nbsp;    ${requestScope.errorRout}
     </div>
+    </c:if>
 <div class="container" >
     <div class="box">
         <div class="fieldstart" >
@@ -81,10 +90,14 @@
                     <input type = "text" name = "department" id = "id_department" value = "${sessionScope.trainParam.department}" >
                 </c:when>
                 <c:otherwise>
-                    <form:input path="department"/>
+                    <form:input path="department" id = "id_department"/>
                 </c:otherwise>
             </c:choose>
         </div >
+    </div>
+
+    <div class="swap1" onclick="swaper()">
+<img class="swap1" src="<c:url value="/resources/images/index-tabs-content-arrows.png" />">
     </div>
 
     <div class="box">

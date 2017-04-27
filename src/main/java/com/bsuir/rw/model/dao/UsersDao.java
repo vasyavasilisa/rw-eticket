@@ -3,6 +3,7 @@ package com.bsuir.rw.model.dao;
 
 
 
+import com.bsuir.rw.model.domain.Feaadback;
 import com.bsuir.rw.model.domain.Users;
 
 import java.util.List;
@@ -17,5 +18,7 @@ public interface UsersDao {
     public void delete(Users ob);
 
     public Users findUser(Users ob);
+    public void saveFeedBackForUser(Feaadback ob);
+    public List<Feaadback>  getFeedBacks();
 
 }

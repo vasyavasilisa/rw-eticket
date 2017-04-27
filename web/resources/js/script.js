@@ -14,3 +14,11 @@ var count=document.getElementById("id_count").value;
    var div_passN=document.getElementById("passN");
     div_passN.innerHTML=new_passangers;
 }
+
+function swaper(){
+   
+    var depVal= document.getElementById("id_department").value;
+    var arrVal=document.getElementById("id_arrive").value;
+    document.getElementById("id_department").value=arrVal;
+    document.getElementById("id_arrive").value=depVal;
+}

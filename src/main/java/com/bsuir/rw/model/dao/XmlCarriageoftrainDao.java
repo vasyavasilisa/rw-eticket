@@ -1,19 +1,15 @@
 package com.bsuir.rw.model.dao;
 
-import com.bsuir.rw.model.domain.Feaadback;
+import com.bsuir.rw.model.beans.PlacesBean;
+import com.bsuir.rw.model.domain.Carriageoftrain;
 import com.bsuir.rw.model.domain.Users;
 
 import java.util.List;
 
 /**
- * Created by USER on 12.04.2017.
+ * Created by USER on 26.04.2017.
  */
-public class XmlUsersDao implements UsersDao{
-
-    public XmlUsersDao() {
-        super();
-    }
-
+public class XmlCarriageoftrainDao implements CarriageoftrainDao {
     @Override
     public boolean insert(Users ob) {
         return false;
@@ -30,17 +26,12 @@ public class XmlUsersDao implements UsersDao{
     }
 
     @Override
-    public Users findUser(Users ob) {
+    public Carriageoftrain findCarriageById(int id) {
         return null;
     }
 
     @Override
-    public void saveFeedBackForUser(Feaadback ob) {
-
-    }
-
-    @Override
-    public List<Feaadback> getFeedBacks() {
+    public List<PlacesBean> findPlacesForCarriage(int idCarriage, int idTrain, String departure, String arrive) {
         return null;
     }
 }

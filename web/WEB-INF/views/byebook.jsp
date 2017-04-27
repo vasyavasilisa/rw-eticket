@@ -16,6 +16,7 @@
 <head>
     <title><spring:message code="byebook.page.title" /></title>
     <link rel='stylesheet' type='text/css' href="<c:url value="/resources/css/style.css"/> ">
+    <script src="<c:url value="/resources/js/script.js"/>"></script>
 
 </head>
 <body>
@@ -90,8 +91,8 @@
 </div>
 <br/>
 <c:if test="${requestScope.errorRout!=null}">
-   <div id="error_message">
-    ${requestScope.errorRout}
+   <div class="error" id="error_message">
+       <img src="<c:url value="/resources/images/attention_login.png" />"alt="Картинка">&nbsp;  ${requestScope.errorRout}
     </div>
 </c:if>
 <form:form method="post"  modelAttribute="trainParam" action="findtrains">
@@ -107,10 +108,16 @@
                     <input type = "text" name = "department" id = "id_department" value = "${sessionScope.trainParam.department}" >
                 </c:when>
                 <c:otherwise>
-                    <form:input path="department"/>
+                    <form:input path="department" id = "id_department"/>
                 </c:otherwise>
             </c:choose>
         </div >
+
+        <div class="swap2" onclick="swaper()">
+            <img class="swap2" src="<c:url value="/resources/images/swapping.png" />">
+        </div>
+
+
         <br/>
         <div class="field" >
             <label for="id_arrive" >

@@ -59,6 +59,9 @@
     </li>
 </ul>
 
+
+<br/>
+<br/>
 <img src="<c:url value="/resources/images/attention_login.png" />"alt="Картинка">&nbsp;
 <span class="error" ><spring:message code="authMessage.page.text" /></span>
 <body>

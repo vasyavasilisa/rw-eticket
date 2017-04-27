@@ -3,9 +3,15 @@ package com.bsuir.rw.controllers;
 import com.bsuir.rw.beans.User;
 import com.bsuir.rw.model.domain.Users;
 import com.bsuir.rw.model.services.UserServices;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.GenericWebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+import org.springframework.web.context.support.XmlWebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -84,7 +90,10 @@ public class AuthController {
             return modelAndView;
         }
         UserServices service = new UserServices();
-        Users ob=new Users();
+       ApplicationContext cont= new ClassPathXmlApplicationContext("applicationContext.xml");
+        Users ob = (Users) cont.getBean("objUser");
+
+        // Users ob=new Users();
         ob.setLogin(user.getLogin());
         ob.setPassword(user.getPassword());
        Users findUser = service.getUserByLoginPassword(ob);

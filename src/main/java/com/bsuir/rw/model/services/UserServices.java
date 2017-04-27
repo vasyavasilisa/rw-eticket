@@ -4,6 +4,7 @@ package com.bsuir.rw.model.services;
 
 import com.bsuir.rw.model.dao.UsersDao;
 import com.bsuir.rw.model.dao.factory.DAOFactory;
+import com.bsuir.rw.model.domain.Feaadback;
 import com.bsuir.rw.model.domain.Tickets;
 import com.bsuir.rw.model.domain.Users;
 import com.bsuir.rw.model.utils.Context;
@@ -94,7 +95,17 @@ public class UserServices {
         return result;
     }
 
+    public boolean createFeedBackForUser(Feaadback entity){
+        UsersDao dao = DAOFactory.getFactory().getUsersDao();
+        dao.saveFeedBackForUser(entity);
+        return true;
+    }
 
+    public  List<Feaadback> getFeedBacks(){
+        UsersDao dao = DAOFactory.getFactory().getUsersDao();
+        List<Feaadback> result=dao.getFeedBacks();
+        return  result;
+    }
 
 
 }

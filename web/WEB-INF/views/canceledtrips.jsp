@@ -59,6 +59,8 @@
     </li>
 </ul>
 
+<br/>
+<br/>
 <form method="post" action="private-office" name="futuretrips">
     <input type = "submit" name = "Submit" value = "<spring:message code="canceledtrips.page.completedTrips.label" />" >
 </form>

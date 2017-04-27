@@ -51,6 +51,9 @@
         </form>
     </li>
 </ul>
+
+<br/>
+<br/>
 <form:form modelAttribute="user"  name="f1" method="post" action="authorisation">
 
     <c:if test="${requestScope.login_attr!=null}">

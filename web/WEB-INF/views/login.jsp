@@ -16,15 +16,15 @@
             <div class="auth">
                 <spring:message code="login.page.text" />, ${sessionScope.user.surname}&nbsp;${sessionScope.user.name}&nbsp;(${sessionScope.user.login})&nbsp;
                 <img src="<c:url value="/resources/images/bg_status.gif" />" alt="Картинка">&nbsp;&nbsp;
-                <button name="auth"   class ="href" value="logout" onClick="document.getElementById(' idForm').submit()" > <spring:message code="login.page.exit" /></button>
+                <button name="auth"   class ="href2" value="logout" onClick="document.getElementById(' idForm').submit()" > <spring:message code="login.page.exit" /></button>
             </div>
 
         </c:when>
         <c:otherwise>
             <div class="auth">
                 <img src="<c:url value="/resources/images/bg_status.gif" />"alt="Картинка">&nbsp;&nbsp;
-                <button name="auth"    class ="href" value="login" onClick="document.getElementById(' idForm').submit()" > <spring:message code="login.page.enter" /></button>|
-                <button name="auth"    class ="href" value="registration" onClick="document.getElementById(' idForm').submit()" ><spring:message code="login.page.reg" /></button>
+                <button name="auth"    class ="href2" value="login" onClick="document.getElementById(' idForm').submit()" > <spring:message code="login.page.enter" /></button>|
+                <button name="auth"    class ="href2" value="registration" onClick="document.getElementById(' idForm').submit()" ><spring:message code="login.page.reg" /></button>
             </div>
         </c:otherwise>
     </c:choose>

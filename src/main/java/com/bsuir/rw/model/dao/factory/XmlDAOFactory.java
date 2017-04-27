@@ -23,18 +23,18 @@ public class XmlDAOFactory extends DAOFactory {
     }
 
     public UsersDao getUsersDao() {
-        return null;
+        return new XmlUsersDao();
     }
 
     public CarriageoftrainDao getCarriageostrainDao() {
-        return null;
+        return new XmlCarriageoftrainDao();
     }
 
     public PlacesDao getPlacesDao() {
-        return null;
+        return new XmlPlacesDao();
     }
 
     public TicketsDao getTicketsDao() {
-        return null;
+        return new XmlTicketsDao();
     }
 }

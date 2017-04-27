@@ -15,7 +15,9 @@ import java.util.Collection;
 /**
  * Created by USER on 10.04.2017.
  */
+
 @Entity
+
 public class Users {
     private int idUser;
 

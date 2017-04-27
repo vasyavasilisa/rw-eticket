@@ -60,7 +60,8 @@
     </li>
 </ul>
 
-
+<br/>
+<br/>
 <form:form modelAttribute="user" id="idForm" name="f1" method="post" action="places_check_auth">
 
     <c:if test="${requestScope.login_attr!=null}">

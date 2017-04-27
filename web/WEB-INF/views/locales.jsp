@@ -10,7 +10,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <div class="local">
 <span style="float: right">
-     <a class="hrefloc" href="?lang=ru"> <spring:message code="application.rusLocale" /></a>
+    <img src="<c:url value="/resources/images/lang-ico.png" />">&nbsp; <span class="login">&nbsp;</span> <a class="hrefloc" href="?lang=ru"> <spring:message code="application.rusLocale" /></a>
     <a  class="hrefloc" href="?lang=en">  <spring:message code="application.enLocale" /></a>
     </span>
 </div>
