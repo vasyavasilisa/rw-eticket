@@ -5,10 +5,7 @@ import com.bsuir.rw.model.beans.TrainsBean;
 import com.bsuir.rw.model.domain.Carriageoftrain;
 import com.bsuir.rw.model.domain.Tickets;
 import com.bsuir.rw.model.domain.Users;
-import com.bsuir.rw.model.services.EmailService;
-import com.bsuir.rw.model.services.TicketService;
-import com.bsuir.rw.model.services.TrainsService;
-import com.bsuir.rw.model.services.UserServices;
+import com.bsuir.rw.model.services.*;
 import com.bsuir.rw.model.utils.DateUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -42,13 +39,15 @@ public class CheckOrderController {
             service.createTicket( ticket);
             StringBuilder startMessage= new StringBuilder(BODY_CONFIRM_ORDER);
             StringBuilder bodyMessage= new StringBuilder();
-            bodyMessage=startMessage.append("Ваш заказ №").append( ticket.getTicketNumber())
+          /*  bodyMessage=startMessage.append("Ваш заказ №").append( ticket.getTicketNumber())
                     .append(" на покупку элуктронных проездных документов на поезд №").append(ticket.getTrainNumber())
             .append(" по маршруту ").append(ticket.getRout()).append(" отправлением ").append(ticket.getDateDeparture()).append(" ")
             .append(ticket.getTimeDeparture()).append(" выполнен успешно. Стоимость заказа: ").append(ticket.getPrice())
-                    .append(" BYN");
-            EmailService emailService = new EmailService();
-            emailService.sendEmail(user.getEmail(), SUBJECT_CONFIRM_ORDER, bodyMessage.toString());
+                    .append(" BYN");*/
+            PdfService s= new PdfService();
+            s.createPdf(ticket);
+           EmailService emailService = new EmailService();
+            emailService.sendMultiEmail(SUBJECT_CONFIRM_ORDER,user.getEmail(),ticket);
         }
 
 

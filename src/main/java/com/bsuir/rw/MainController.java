@@ -8,6 +8,8 @@ import com.bsuir.rw.model.domain.Carriage;
 import com.bsuir.rw.model.domain.Carriageoftrain;
 import com.bsuir.rw.model.domain.Users;
 import com.bsuir.rw.model.services.EmailService;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,10 @@ import com.bsuir.rw.model.services.TrainsService;
 
 //import javax.validation.Valid;
 import javax.validation.Valid;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,12 +49,16 @@ public class MainController {
     /*First method on start application*/
     /*Попадаем сюда на старте приложения (см. параметры аннотации и настройки пути после деплоя) */
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String main() {
+    public String main() throws DocumentException {
+
+
         return "main";
     }
 
     @RequestMapping(value = "/main", method = RequestMethod.POST)
     public String homepage() {
+
+
         return "main";
     }
 
