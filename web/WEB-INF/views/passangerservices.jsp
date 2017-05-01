@@ -53,7 +53,7 @@
     <li>
         <form method="post"   action="feedbacks"><!--Отзывы -->
             <button name = "Submit"  onclick="submit ()" value = "" >
-                <spring:message code="start.page.feedbacks.button" />
+                <spring:message code="start.page.feedbacks.button" />&nbsp; ${sessionScope.colFeedbacks}
             </button>
         </form>
     </li>
@@ -61,6 +61,9 @@
 
 <br/>
 <br/>
+<br/>
+<br/>
+
 <form action="byebook" method="post" name="servicesForm">
 <button name="action" value="bye-book-action" onclick="submit()">
     <spring:message code="passangerservices.page.byebook.button"/>

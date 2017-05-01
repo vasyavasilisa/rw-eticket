@@ -52,11 +52,15 @@
     <li>
         <form method="post"   action="feedbacks"><!--Отзывы -->
             <button name = "Submit"  onclick="submit ()" value = "" >
-                <spring:message code="start.page.feedbacks.button" />
+                <spring:message code="start.page.feedbacks.button" />&nbsp; ${sessionScope.colFeedbacks}
             </button>
         </form>
     </li>
 </ul>
+<br/>
+<br>
+<br/>
+<br/>
 <spring:message code="returnNotice.page.text1" /> ${requestScope.ticketNumber} <spring:message code="returnNotice.page.text2" />.
 <spring:message code="returnNotice.page.text3" /> ${ user.email} <spring:message code="returnNotice.page.text4" />
 </body>

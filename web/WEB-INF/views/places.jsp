@@ -53,12 +53,13 @@
     <li>
         <form method="post"   action="feedbacks"><!--Отзывы -->
             <button name = "Submit"  onclick="submit ()" value = "" >
-                <spring:message code="start.page.feedbacks.button" />
+                <spring:message code="start.page.feedbacks.button" />&nbsp; ${sessionScope.colFeedbacks}
             </button>
         </form>
     </li>
 </ul>
 
+<br/>
 <div class="submenu">
     <div class="subbox">
         <div class="text" ><a href="#" ><spring:message code="start.page.submenu.rout" /></a></div >

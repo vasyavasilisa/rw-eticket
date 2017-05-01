@@ -53,7 +53,7 @@
     <li>
         <form method="post"   action="feedbacks"><!--Отзывы -->
             <button name = "Submit"  onclick="submit ()" value = "" >
-                <spring:message code="start.page.feedbacks.button" />
+                <spring:message code="start.page.feedbacks.button" />&nbsp; ${sessionScope.colFeedbacks}
             </button>
         </form>
     </li>
@@ -62,6 +62,9 @@
 
 <br/>
 <br/>
+<br/>
+<br/>
+
 <img src="<c:url value="/resources/images/attention_login.png" />"alt="Картинка">&nbsp;
 <span class="error" ><spring:message code="authMessage.page.text" /></span>
 <body>

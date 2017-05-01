@@ -15,7 +15,7 @@
 <head>
     <title><spring:message code="findtrains.page.title" /></title>
     <link rel='stylesheet' type='text/css' href="<c:url value="/resources/css/style.css"/> ">
-    <script src="js/main.js"></script>
+    <script src="<c:url value="/resources/js/script.js"/> "></script>
     <script>
         window.onload=function(){
             if(document.getElementsByName("sort")[0].disabled==true){
@@ -66,12 +66,13 @@
     <li>
         <form method="post"   action="feedbacks"><!--Отзывы -->
             <button name = "Submit"  onclick="submit ()" value = "" >
-                <spring:message code="start.page.feedbacks.button" />
+                <spring:message code="start.page.feedbacks.button" />&nbsp; ${sessionScope.colFeedbacks}
             </button>
         </form>
     </li>
 </ul>
 
+<br/>
 <div class="submenu">
     <div class="subbox">
         <div class="text" ><a href="#" ><spring:message code="start.page.submenu.rout" /></a></div >

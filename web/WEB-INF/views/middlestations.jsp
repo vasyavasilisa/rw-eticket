@@ -50,13 +50,16 @@
     <li>
         <form method="post"   action="feedbacks"><!--Отзывы -->
             <button name = "Submit"  onclick="submit ()" value = "" >
-                <spring:message code="start.page.feedbacks.button" />
+                <spring:message code="start.page.feedbacks.button" />&nbsp; ${sessionScope.colFeedbacks}
             </button>
         </form>
     </li>
 </ul>
 
-
+<br/>
+<br/>
+<br/>
+<br/>
 <table>
     <th><spring:message code="middlestations.page.trainnumber.label"/></th><!--Номер поезда-->
     <th><spring:message code="middlestations.page.station.label"/></th><!--Станция-->

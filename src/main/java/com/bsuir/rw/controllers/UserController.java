@@ -14,8 +14,14 @@ import java.util.List;
  * Created by USER on 25.04.2017.
  */
 @Controller
-@SessionAttributes({"user","trainParam"})
+@SessionAttributes({"user","trainParam","colFeedbacks"})
 public class UserController {
+
+
+    @ModelAttribute("user")
+    public Users createUserRequest() {
+        return new Users();
+    }
 
 
     @RequestMapping(value = "/leave-feedback", method = RequestMethod.POST)
@@ -27,6 +33,9 @@ public class UserController {
         feedback.setUsersByIdUser(user);
         feedback.setText(text);
         service.createFeedBackForUser(feedback);
+        UserServices service2= new UserServices();
+        List<Feaadback> list=service2.getFeedBacks();
+        modelAndView.addObject("colFeedbacks",list.size());
         modelAndView.setViewName("main");
         return modelAndView;
     }
@@ -44,7 +53,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/feedbacks", method = RequestMethod.POST)
-    public ModelAndView feedbacks(@SessionAttribute("user") Users user) {
+    public ModelAndView feedbacks(/*@SessionAttribute("user") Users user*/) {
         ModelAndView modelAndView = new ModelAndView();
 UserServices service= new UserServices();
         List<Feaadback> feedbacks= service.getFeedBacks();

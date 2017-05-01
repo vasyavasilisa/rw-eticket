@@ -47,12 +47,17 @@
     <li>
         <form method="post"   action="feedbacks"><!--Отзывы -->
             <button name = "Submit"  onclick="submit ()" value = "" >
-                <spring:message code="start.page.feedbacks.button" />
+                <spring:message code="start.page.feedbacks.button" />&nbsp; ${sessionScope.colFeedbacks}
             </button>
         </form>
     </li>
 </ul>
 
+
+<br/>
+<br/>
+<br/>
+<br/>
 
 <form:form method="post"  modelAttribute="user"  name="form_reg" action="registration">
     <span class="necessar"> *  <spring:message code="registration.page.surname" />:</span> <br />

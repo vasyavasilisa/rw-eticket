@@ -54,7 +54,7 @@
     <li>
         <form method="post"   action="feedbacks"><!--Отзывы -->
             <button name = "Submit" class="current"  onclick="submit ()" value = "" >
-                <spring:message code="start.page.feedbacks.button" />
+                <spring:message code="start.page.feedbacks.button" />&nbsp; ${sessionScope.colFeedbacks}
             </button>
         </form>
     </li>
@@ -65,11 +65,18 @@
 <br/>
 <c:forEach var="feedbacks" items="${feedbacks}" varStatus="status">
 <div class="feedbacks">
-  <img src="<c:url value="/resources/images/ic_info.gif" />">&nbsp; <span class="login"> <c:out value="${ feedbacks.usersByIdUser.login }" /></span>
+  <img src="<c:url value="/resources/images/133716.png" />">&nbsp; <span class="login"> <c:out value="${ feedbacks.usersByIdUser.login }" /></span>
    <br/>
     <c:out value="${ feedbacks.text }" />
 </div>
     </c:forEach>
 
+<c:if test="${sessionScope.user.surname !=  null}">
+    <form action="leave-feedback" method="post" id="leaveFId">
+        <h4>Введите текст отзыва</h4>
+        <textarea name="feedback"></textarea>
+        <input type = "submit" name = "Submit" value = "Отправить"/>
+    </form>
+    </c:if>
 </body>
 </html>

@@ -4,14 +4,16 @@ package com.bsuir.rw;
  * Created by USER on 09.04.2017.
  */
 import com.bsuir.rw.model.beans.TrainsBean;
-import com.bsuir.rw.model.domain.Carriage;
+
 import com.bsuir.rw.model.domain.Carriageoftrain;
+import com.bsuir.rw.model.domain.Feaadback;
 import com.bsuir.rw.model.domain.Users;
-import com.bsuir.rw.model.services.EmailService;
+
+import com.bsuir.rw.model.services.UserServices;
 import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.*;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import com.bsuir.rw.beans.Train;
@@ -21,18 +23,13 @@ import com.bsuir.rw.model.beans.StationsOfTrainBean;
 import com.bsuir.rw.model.services.StationsOfTrainService;
 import com.bsuir.rw.model.services.TrainsService;
 
-//import javax.validation.Valid;
-import javax.validation.Valid;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 @Controller
-@SessionAttributes({"trainParam", "trainId","user","carriage"})
+@SessionAttributes({"trainParam", "trainId","user","carriage","colFeedbacks"})
 public class MainController {
 
     private static final String SORT_PARAM="sort";
@@ -45,22 +42,6 @@ public class MainController {
     private static final String ERR_ROUT = "Нет поездов по указанному маршруту";
     private static final String ERR_DATE = "В указанную дату поезд не идёт";
 
-
-    /*First method on start application*/
-    /*Попадаем сюда на старте приложения (см. параметры аннотации и настройки пути после деплоя) */
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String main() throws DocumentException {
-
-
-        return "main";
-    }
-
-    @RequestMapping(value = "/main", method = RequestMethod.POST)
-    public String homepage() {
-
-
-        return "main";
-    }
 
     @ModelAttribute("trainParam")
     public Train createTrainRequest() {
@@ -77,6 +58,37 @@ public class MainController {
     public Users createUserRequest() {
         return new Users();
     }
+
+    @ModelAttribute("colFeedbacks")
+    public int createFeedbaksRequest() {
+        return 0;
+    }
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public  ModelAndView main() throws DocumentException {
+
+        ModelAndView modelAndView = new ModelAndView();
+        UserServices service= new UserServices();
+        List<Feaadback> list=service.getFeedBacks();
+        modelAndView.addObject("colFeedbacks",list.size());
+        modelAndView.setViewName("main");
+        return modelAndView;
+
+    }
+
+    @RequestMapping(value = "/main", method = RequestMethod.POST)
+    public String homepage() {
+
+        return "main";
+    }
+
+    @RequestMapping(value = "/main", method = RequestMethod.GET)
+    public String homepageGet() {
+        return "main";
+
+    }
+
+
 
 ///
 @RequestMapping(value = "/passenger-services", method = RequestMethod.POST)
@@ -258,7 +270,14 @@ public String passengerServices() {
     }
 
 
-
-
+    @RequestMapping(value = "/show-video", method = RequestMethod.POST)
+    public String showVideo() {    /*Промежуточные или вагоны */
+        return "video";
 
     }
+
+
+
+
+
+}
