@@ -74,24 +74,27 @@
     <div class="subbox">
         <div class="text" ><a href="#" ><spring:message code="start.page.submenu.passanger" /></a></div>
     </div >
-    <div class="cursubbox">
+    <div class="cursubbox1">
         <div class="text" ><a href="#" ><spring:message code="start.page.submenu.confirm" /></a></div>
     </div >
     <div class="subbox">
         <div class="text"> <a href="#" ><spring:message code="start.page.submenu.order" /></a></div>
     </div >
 </div>
-
+<br/>
+<br/>
+<br/>
+<br/>
 <form method="post" action="confirmorder" id="myForm">
 <div class="train">
 <h3><spring:message code="checkorder.page.checkRecvisits.label" /></h3>
-    <table>
-    <tr><td><strong><spring:message code="checkorder.page.train.label" />:</strong></td></td> <td>  <c:out value="${ requestScope.singleTicket.trainNumber }" /></td></tr>
-    <tr><td><strong><spring:message code="checkorder.page.rout.label" />:</strong></td><td>  <c:out value="${ requestScope.singleTicket.rout }" /></td></tr>
-    <tr><td><strong><spring:message code="checkorder.page.departure.label" />:</strong></td><td> <c:out value="${ requestScope.singleTicket.dateDeparture }"  />&nbsp;<c:out value="${ requestScope.singleTicket.timeDeparture }"/></td></tr>
-    <tr><td><strong><spring:message code="checkorder.page.arrive.label" />:</strong></td><td><c:out value="${ requestScope.singleTicket.timeArrive }"  /></td></tr>
-    <tr><td><strong><spring:message code="checkorder.page.carriage.label" />:</strong></td><td><c:out value="${ requestScope.singleTicket.carriageNumber }"  /></td></tr>
-<tr><td><strong><spring:message code="checkorder.page.places.label" />:</strong></td><td>
+    <table style="text-align: left; border-collapse: collapse;">
+    <tr><td style="padding: 3px 20px"><strong><spring:message code="checkorder.page.train.label" />:</strong></td></td> <td>  <c:out value="${ requestScope.singleTicket.trainNumber }" /></td></tr>
+    <tr><td style="padding: 3px 20px"><strong><spring:message code="checkorder.page.rout.label" />:</strong></td><td>  <c:out value="${ requestScope.singleTicket.rout }" /></td></tr>
+    <tr><td style="padding: 3px 20px"><strong><spring:message code="checkorder.page.departure.label" />:</strong></td><td> <c:out value="${ requestScope.singleTicket.dateDeparture }"  />&nbsp;<c:out value="${ requestScope.singleTicket.timeDeparture }"/></td></tr>
+    <tr><td style="padding: 3px 20px"><strong><spring:message code="checkorder.page.arrive.label" />:</strong></td><td><c:out value="${ requestScope.singleTicket.timeArrive }"  /></td></tr>
+    <tr><td style="padding: 3px 20px"><strong><spring:message code="checkorder.page.carriage.label" />:</strong></td><td><c:out value="${ requestScope.singleTicket.carriageNumber }"  /></td></tr>
+<tr><td style="padding: 3px 20px"><strong><spring:message code="checkorder.page.places.label" />:</strong></td><td>
 <c:forEach var="resultTickets" items="${resultTickets}" varStatus="status">
     <c:out value="${ resultTickets.placeNumber}" />&nbsp;
     </c:forEach>
@@ -100,29 +103,30 @@
 
 <div class="passangers">
 <h3><spring:message code="checkorder.page.passangerInfo.label" /></h3>
-    <table>
-       <th><spring:message code="checkorder.page.passanger.label" /></th>
-        <th><spring:message code="checkorder.page.passport.label" /></th>
-        <th><spring:message code="checkorder.page.price.label" /></th>
-        <th><spring:message code="checkorder.page.currency.label" /></th>
+    <table style="text-align: left; border-collapse: collapse;">
+       <th style="padding: 3px 20px"><spring:message code="checkorder.page.passanger.label" /></th>
+        <th style="padding: 3px 20px"><spring:message code="checkorder.page.passport.label" /></th>
+        <th style="padding: 3px 20px"><spring:message code="checkorder.page.price.label" /></th>
+        <th style="padding: 3px 20px"><spring:message code="checkorder.page.currency.label" /></th>
     <c:forEach var="resultTickets" items="${resultTickets}" varStatus="status">
     <tr>
-        <td>  <c:out value="${ resultTickets.passangerSurname }" />&nbsp; <c:out value="${ resultTickets.passangerName }" /></td>
-        <td>  <c:out value="${ resultTickets.passportNumber }" /></td>
-        <td>  <c:out value="${ resultTickets.price }" /></td>
-        <td>BYN</td>
+        <td style="padding: 3px 20px">  <c:out value="${ resultTickets.passangerSurname }" />&nbsp; <c:out value="${ resultTickets.passangerName }" /></td>
+        <td style="padding: 3px 20px">  <c:out value="${ resultTickets.passportNumber }" /></td>
+        <td style="padding: 3px 20px">  <c:out value="${ resultTickets.price }" /></td>
+        <td style="padding: 3px 20px">BYN</td>
         </tr>
         </c:forEach>
 </table>
 </div>
 
-<input type = "submit" name = "Submit" value = "<spring:message code="checkorder.page.confirmOrder.button" />">
+    <br/>
+<input type = "submit" class="orange" name = "Submit" value = "<spring:message code="checkorder.page.confirmOrder.button" />">
     </form>
 
 
 <form action="places" method="post">
     <input type="hidden" name="carriage" value="${sessionScope.carriageId}">
-<input type = "submit" name = "Submit" value = "<spring:message code="checkorder.page.back.button" />">
+<input type = "submit" class="orange" name = "Submit" value = "<spring:message code="checkorder.page.back.button" />">
 </form>
 </body>
 </html>

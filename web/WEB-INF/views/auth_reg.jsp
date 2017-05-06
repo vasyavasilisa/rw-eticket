@@ -15,6 +15,7 @@
     <link rel='stylesheet' type='text/css' href="<c:url value="/resources/css/style.css"/> ">
 </head>
 
+<body bgcolor="#EFEFEF">
 <jsp:include page="locales.jsp"></jsp:include>
 <jsp:include page="login.jsp"></jsp:include>
 
@@ -59,7 +60,8 @@
         </form>
     </li>
 </ul>
-
+<div class="myfon">
+</div>
 <br/>
 <br/>
 <form:form modelAttribute="user" id="idForm" name="f1" method="post" action="places_check_auth">
@@ -82,8 +84,8 @@
     <br />
     <input name="remember" type="checkbox" value="yes" /> <spring:message code="auth_reg.page.remember.label" /> <br />
     <br />
-    <button name="enter"  value="login" onClick="document.getElementById('idForm').submit()" ><spring:message code="auth_reg.page.enter.label" /></button>|
-    <button name="enter"   value="registration" onClick="document.getElementById('idForm').submit()" ><spring:message code="auth_reg.page.reg.label" /></button>
+    <button name="enter" class="orange" value="login" onClick="document.getElementById('idForm').submit()" ><spring:message code="auth_reg.page.enter.label" /></button>|
+    <button name="enter"   class="orange" value="registration" onClick="document.getElementById('idForm').submit()" ><spring:message code="auth_reg.page.reg.label" /></button>
 
 </form:form>
 </body>

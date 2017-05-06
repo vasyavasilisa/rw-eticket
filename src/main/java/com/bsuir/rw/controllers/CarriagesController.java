@@ -2,13 +2,11 @@ package com.bsuir.rw.controllers;
 
 import com.bsuir.rw.beans.Train;
 import com.bsuir.rw.beans.User;
-import com.bsuir.rw.model.beans.PlacesBean;
-import com.bsuir.rw.model.domain.Carriage;
+import com.bsuir.rw.beans.PlacesBean;
 import com.bsuir.rw.model.domain.Carriageoftrain;
-import com.bsuir.rw.model.domain.Tickets;
 import com.bsuir.rw.model.domain.Users;
-import com.bsuir.rw.model.services.CarriageoftrainService;
-import com.bsuir.rw.model.services.UserServices;
+import com.bsuir.rw.services.CarriageoftrainService;
+import com.bsuir.rw.services.UserServices;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;

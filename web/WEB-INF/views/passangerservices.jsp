@@ -64,19 +64,27 @@
 <br/>
 <br/>
 
+<div class="train-im">
+</div>
+<div class="side">
+    <img src="<c:url value="/resources/images/pass1.png" />"alt="Картинка">
 <form action="byebook" method="post" name="servicesForm">
 <button name="action" value="bye-book-action" onclick="submit()">
     <spring:message code="passangerservices.page.byebook.button"/>
 </button>     <!--На  byebook.jsp-->
+    </form>
+    <img src="<c:url value="/resources/images/dp3_20141.png" />"alt="Картинка">
+<form action="byebook" method="post" name="servicesForm">
 <button name="action"  value="points-sale-action" onclick="submit()">
     <spring:message code="passangerservices.page.pointsforsale.button"/>
 </button>
-
 </form>
+    <img src="<c:url value="/resources/images/tea.png" />"alt="Картинка">
     <form action="fill-feedback" method="post" name="servicesForm"><!--Кнопка отзываов-->
     <button name="action"  value="points-sale-action" onclick="submit()">
         <spring:message code="passangerservices.page.feedback.button"/>
     </button>
 </form>
+</div>
 </body>
 </html>

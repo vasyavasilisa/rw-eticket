@@ -14,7 +14,7 @@
         <title><spring:message code="middlestations.page.title"/></title>
         <link rel='stylesheet' type='text/css' href="<c:url value="/resources/css/style.css"/> ">
     </head>
-<body>
+<body bgcolor="#EFEFEF">
 
 <jsp:include page="locales.jsp"></jsp:include>
 <jsp:include page="login.jsp"></jsp:include>
@@ -60,7 +60,7 @@
 <br/>
 <br/>
 <br/>
-<table>
+<table class="table_col">
     <th><spring:message code="middlestations.page.trainnumber.label"/></th><!--Номер поезда-->
     <th><spring:message code="middlestations.page.station.label"/></th><!--Станция-->
     <th><spring:message code="middlestations.page.timearrive.label"/></th><!--Время прибытия-->

@@ -16,7 +16,7 @@
     <link rel='stylesheet' type='text/css' href="<c:url value="/resources/css/style.css"/> ">
 
 </head>
-<body>
+<body bgcolor="#EFEFEF">
 
 
 <jsp:include page="locales.jsp"></jsp:include>
@@ -83,6 +83,9 @@
 </div>
 
 <br/>
+<br/>
+<br/>
+<br/>
 <spring:message code="places.page.rout.label" />: ${ sessionScope.trainParam.department } - ${ sessionScope.trainParam.arrive }
 <br/>
 <spring:message code="places.page.dateDeparture.label" />:
@@ -110,26 +113,29 @@ ${ sessionScope.carriage.type }
 
     <div id="pass1">
     <h4><spring:message code="places.page.passanger.label" />:1</h4>
-        <spring:message code="places.page.passangerSurname.label" />:
+
+        <spring:message code="places.page.passangerSurname.label" />:  <br/>
     <input type="text" name="surname" id="id_surname"  value="">
     <br/>
-        <spring:message code="places.page.passangerName.label" />:
+        <spring:message code="places.page.passangerName.label" />:  <br/>
     <input type="text" name="name" id="id_name"  value="">
     <br/>
         <spring:message code="places.page.passangerPassport.label" />:
+        <br/>
     <input type="text" name="passport" id="id_passport"  value="">
     <br/>
     </div>
     <div id="passN">
     </div>
-    <h3> <spring:message code="places.page.choosePlace.label" /></h3>
 
-    <table>
+
+    <table class="table_col2">
+        <caption> <h3> <spring:message code="places.page.choosePlace.label" /></h3></caption>
         <!--th>id Места</th-->
         <th><spring:message code="places.page.placeNumber.label" /></th>
         <th><spring:message code="places.page.placeType.label" /></th>
         <!--th>Статус места</th-->
-        <th><spring:message code="places.page.costPlace.label" /></th>
+        <th><spring:message code="places.page.costPlace.label" />(BYN)</th>
         <c:forEach var="places" items="${places}" varStatus="status">
         <tr>
             <!--td>  <c:out value="${ places.idPlace }" /></td-->
@@ -142,8 +148,13 @@ ${ sessionScope.carriage.type }
         </tr>
 
     </table>
-    <input type = "submit" name = "bye" value = "<spring:message code="places.page.byeTicket.button" />">
-    <input type = "submit" name = "book" value = "<spring:message code="places.page.book.button" />">
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <input type = "submit" class="orange" name = "bye" value = "<spring:message code="places.page.byeTicket.button" />">
+    <input type = "submit" class="orange" name = "book" value = "<spring:message code="places.page.book.button" />">
 </form>
 <script type="text/javascript" src="<c:url value="/resources/js/script.js"/>"></script>
 </body>

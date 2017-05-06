@@ -8,7 +8,7 @@
     <title>Регистрация</title>
     <link rel='stylesheet' type='text/css' href="<c:url value="/resources/css/style.css"/> ">
 </head>
-<body>
+<body bgcolor="#EFEFEF">
 
 <jsp:include page="locales.jsp"></jsp:include>
 <jsp:include page="login.jsp"></jsp:include>
@@ -53,7 +53,8 @@
     </li>
 </ul>
 
-
+<div class="myfon">
+</div>
 <br/>
 <br/>
 <br/>
@@ -94,7 +95,7 @@
 
 
     <br />
-    <input type="submit" name="register" value=" <spring:message code="registration.page.reg.button" />" />
+    <input type="submit" class="orange" name="register" value=" <spring:message code="registration.page.reg.button" />" />
 </form:form>
 </body>
 </html>

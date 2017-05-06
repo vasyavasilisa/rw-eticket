@@ -12,8 +12,8 @@ public class Stationsoftrain {
     private int idStationOfTrain;
     private int idTrain;
     private int idStation;
-    private Serializable datetimeOfArrive;
-    private Serializable datetimeOfDeparture;
+    private String datetimeOfArrive;
+    private String datetimeOfDeparture;
     private Integer distance;
     private Stations stationsByIdStation;
     private Trains trainsByIdTrain;
@@ -52,21 +52,21 @@ public class Stationsoftrain {
 
     @Basic
     @Column(name = "datetimeOfArrive", nullable = true)
-    public Serializable getDatetimeOfArrive() {
+    public String getDatetimeOfArrive() {
         return datetimeOfArrive;
     }
 
-    public void setDatetimeOfArrive(Serializable datetimeOfArrive) {
+    public void setDatetimeOfArrive(String datetimeOfArrive) {
         this.datetimeOfArrive = datetimeOfArrive;
     }
 
     @Basic
     @Column(name = "datetimeOfDeparture", nullable = true)
-    public Serializable getDatetimeOfDeparture() {
+    public String getDatetimeOfDeparture() {
         return datetimeOfDeparture;
     }
 
-    public void setDatetimeOfDeparture(Serializable datetimeOfDeparture) {
+    public void setDatetimeOfDeparture(String datetimeOfDeparture) {
         this.datetimeOfDeparture = datetimeOfDeparture;
     }
 

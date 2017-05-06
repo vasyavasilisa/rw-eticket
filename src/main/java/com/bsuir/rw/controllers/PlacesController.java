@@ -1,27 +1,21 @@
 package com.bsuir.rw.controllers;
 
 import com.bsuir.rw.beans.Train;
-import com.bsuir.rw.beans.User;
-import com.bsuir.rw.model.beans.PlacesBean;
-import com.bsuir.rw.model.beans.TrainsBean;
+import com.bsuir.rw.beans.TrainsBean;
 import com.bsuir.rw.model.domain.Carriageoftrain;
 import com.bsuir.rw.model.domain.Places;
 import com.bsuir.rw.model.domain.Tickets;
 import com.bsuir.rw.model.domain.Users;
-import com.bsuir.rw.model.services.CarriageoftrainService;
-import com.bsuir.rw.model.services.PlacesService;
-import com.bsuir.rw.model.services.TicketService;
-import com.bsuir.rw.model.services.TrainsService;
-import com.bsuir.rw.model.utils.*;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
+import com.bsuir.rw.services.PlacesService;
+import com.bsuir.rw.services.TicketService;
+import com.bsuir.rw.services.TrainsService;
+import com.bsuir.rw.utils.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 

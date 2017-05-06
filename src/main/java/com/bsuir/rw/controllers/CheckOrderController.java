@@ -1,19 +1,13 @@
 package com.bsuir.rw.controllers;
 
-import com.bsuir.rw.beans.Train;
-import com.bsuir.rw.model.beans.TrainsBean;
-import com.bsuir.rw.model.domain.Carriageoftrain;
 import com.bsuir.rw.model.domain.Tickets;
 import com.bsuir.rw.model.domain.Users;
-import com.bsuir.rw.model.services.*;
-import com.bsuir.rw.model.utils.DateUtil;
+import com.bsuir.rw.services.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**

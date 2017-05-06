@@ -64,16 +64,16 @@
 <br/>
 <br/>
 <form method="post" action="private-office" name="futuretrips">
-    <input type = "submit" name = "Submit" value = "<spring:message code="canceledtrips.page.completedTrips.label" />" >
+    <input type = "submit" class="orange" name = "Submit" value = "<spring:message code="canceledtrips.page.completedTrips.label" />" >
 </form>
 
 <form method="post" action="future-trips" name="canceledtrips">
-    <input type = "submit" name = "Submit" value = "<spring:message code="canceledtrips.page.futureTrips.label" />" >
+    <input type = "submit" class="orange" name = "Submit" value = "<spring:message code="canceledtrips.page.futureTrips.label" />" >
 </form>
 
 <h3><spring:message code="canceledtrips.page.title" /></h3>
 <c:if test="${not empty canceledTrips}">
-    <table>
+    <table class="table_col3">
         <th><spring:message code="canceledtrips.page.orderNumber.label" /></th>
         <th><spring:message code="canceledtrips.page.dateTimeOrder.label" /></th>
         <th><spring:message code="canceledtrips.page.dateTimeTrip.label" /></th>

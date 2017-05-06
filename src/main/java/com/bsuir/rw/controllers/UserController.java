@@ -1,9 +1,8 @@
 package com.bsuir.rw.controllers;
 
-import com.bsuir.rw.beans.User;
 import com.bsuir.rw.model.domain.Feaadback;
 import com.bsuir.rw.model.domain.Users;
-import com.bsuir.rw.model.services.UserServices;
+import com.bsuir.rw.services.UserServices;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;

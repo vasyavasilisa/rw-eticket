@@ -19,11 +19,13 @@
     <script src="<c:url value="/resources/js/script.js"/>"></script>
 
 </head>
-<body>
+<body  bgcolor="#EFEFEF">
 
 
 <jsp:include page="locales.jsp"></jsp:include>
 <jsp:include page="login.jsp"></jsp:include>
+
+
 
 <ul id="breadcrumbs-one"><!-- Меню-->
     <li>   <form action="main" method="post"  name="startForm">
@@ -67,6 +69,8 @@
 
 <br/>
 
+<div class="myfon">
+</div>
 <div class="submenu">
         <div class="cursubbox">
             <div class="text" ><a href="#" ><spring:message code="start.page.submenu.rout" />
@@ -91,12 +95,12 @@
 </div>
 <br/>
 <c:if test="${requestScope.errorRout!=null}">
-   <div class="error" id="error_message">
+   <div    style="float: left;margin-top: 60px" class="error" id="error_message">
        <img src="<c:url value="/resources/images/attention_login.png" />"alt="Картинка">&nbsp;  ${requestScope.errorRout}
     </div>
 </c:if>
-<form:form method="post"  modelAttribute="trainParam" action="findtrains">
-    <fieldset>
+<form:form method="post"  modelAttribute="trainParam" action="findtrains" class="byeForm">
+
         <div class="field" >
             <label for="id_department" >
                 <spring:message code="byebook.page.stationdep.label" />
@@ -153,11 +157,11 @@
         <br/>
         <br/>
         <div class="block" >
-            <INPUT TYPE="button" onclick="resetmyForm()" VALUE ="  <spring:message code="byebook.page.reset.button"/>">
+            <INPUT TYPE="button" class= "orange" onclick="resetmyForm()" VALUE ="  <spring:message code="byebook.page.reset.button"/>">
             <input type = "hidden" name = "action" value = "find-trains-action" />
-            <input type = "submit" name = "Submit" value = " <spring:message code="byebook.page.continue.button"/>" >
+            <input type = "submit" class="orange" name = "Submit" value = " <spring:message code="byebook.page.continue.button"/>" >
         </div >
-    </fieldset>
+
 </form:form>
 <!--script src="js/script.js"></script-->
 </body>

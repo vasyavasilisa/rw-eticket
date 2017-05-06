@@ -97,6 +97,8 @@ CREATE DATABASE Railway_manag;
 		INSERT INTO trains (idTrain,number,nameTrain) VALUES(3,'127B','Орша-Минск');
         
 		/*//////////////////////////////////////Поезд №127B //////////////////////*/
+
+
 		INSERT INTO stationsOfTrain (idStationOfTrain,idTrain,idStation,datetimeOfDeparture) VALUES(1,3,1,'20170312074500');
 		INSERT INTO stationsOfTrain (idStationOfTrain,idTrain,idStation,datetimeOfArrive,datetimeOfDeparture,distance) VALUES(2,3,2,'20170312083500','20170312083800',137);
 		INSERT INTO stationsOfTrain (idStationOfTrain,idTrain,idStation,datetimeOfArrive,datetimeOfDeparture,distance) VALUES(3,3,3,'20170312090700','20170312090800',160);

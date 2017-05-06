@@ -27,7 +27,7 @@
         }
     </script>
 </head>
-<body>
+<body bgcolor="#EFEFEF">
 
 <jsp:include page="locales.jsp"></jsp:include>
 <jsp:include page="login.jsp"></jsp:include>
@@ -72,6 +72,8 @@
     </li>
 </ul>
 
+<!--div class="myfon">
+</div-->
 <br/>
 <div class="submenu">
     <div class="subbox">
@@ -96,6 +98,9 @@
 </div>
 
 <br/>
+<br/>
+<br/>
+<br/>
 <form method="post" action="trains-info" id="myForm">
 
     ${ sessionScope.trainParam.department }
@@ -104,7 +109,8 @@
         <br>
         ${ sessionScope.trainParam.date }
 
-    <table>
+    <table class="table_col">
+        <th></th><!--Номер поезда-->
         <th><spring:message code="findtrains.page.numbertrain.label" /></th><!--Номер поезда-->
         <th><spring:message code="findtrains.page.rout.label" /></th><!--Маршрут-->
         <th><spring:message code="findtrains.page.timedep.label" /></th><!--Время отправления-->
@@ -113,13 +119,14 @@
         <th><spring:message code="findtrains.page.countseats.label" /></th><!--Количество свободных мест-->
         <c:forEach var="trains" items="${trains}" varStatus="status">
         <tr>
+            <td > <input type="radio" onclick="javascript: submit()" name="idTrain"  value="${trains.idTrain}" /> </td>
             <td>  <c:out value="${ trains.number }" /></td>
             <td>  <button name="middlestations"    class ="href" value="${trains.idTrain}" onClick="document.getElementById('myForm').submit()" >${trains.nameTrain}</button></td>
             <td><c:out value="${ trains.timeDeparture }" /></td>
             <td> <c:out value="${ trains.timeArrive }" /></td>
             <td> <c:out value="${ trains.travelTime }" /></td>
             <td> <c:out value="${ trains.numberOfAvailSeats }" /></td>
-            <td > <input type="radio" onclick="javascript: submit()" name="idTrain"  value="${trains.idTrain}" /> </td>
+
             </c:forEach>
         </tr>
 
@@ -127,19 +134,21 @@
     <input type="hidden" name="action" value="find-carriages-action" >
 </form>
 
-<form action="trains-sort" method="post">
+<form action="trains-sort" method="post" class="sort">
 <c:choose>
     <c:when test="${requestScope.checkbox != null}">
     <c:choose>
         <c:when test="${requestScope.checkbox=='sortTimeDep'}">
             <input type="radio"  name="sort"  value="sorttimetravel" onclick="javascript: submit()" >
             <spring:message code="findtrains.page.sorttimetravel.label" />
+            <br/>
             <input type="radio" name="sort" disabled value="sorttimedeparture" onclick="javascript: submit()" >
             <spring:message code="findtrains.page.sorttimedep.label" />
         </c:when>
         <c:when test="${requestScope.checkbox=='sortTimeTravel'}">
             <input type="radio"  name="sort" disabled value="sorttimetravel" onclick="javascript: submit()" >
             <spring:message code="findtrains.page.sorttimetravel.label" />
+            <br/>
             <input type="radio" name="sort"  value="sorttimedeparture" onclick="javascript: submit()" >
             <spring:message code="findtrains.page.sorttimedep.label" />
         </c:when>
@@ -147,7 +156,7 @@
     </c:when>
     <c:otherwise>
         <input type="radio"  name="sort"  value="sorttimetravel" onclick="javascript: submit()" >
-        <spring:message code="findtrains.page.sorttimetravel.label" />
+        <spring:message code="findtrains.page.sorttimetravel.label" /><br/>
         <input type="radio" name="sort"  value="sorttimedeparture" onclick="javascript: submit()" >
         <spring:message code="findtrains.page.sorttimedep.label" />
     </c:otherwise>

@@ -66,11 +66,11 @@
 
 
 <form method="post" action="future-trips" name="futuretrips">
-    <input type = "submit" name = "Submit" value = "<spring:message code="privateOffice.page.futureTrips.button" />" >
+    <input type = "submit" class="orange" name = "Submit" value = "<spring:message code="privateOffice.page.futureTrips.button" />" >
     </form>
 
     <form method="post" action="canceled-orders" name="canceledtrips">
-        <input type = "submit" name = "Submit" value = "<spring:message code="privateOffice.page.canceledTrips.button" />" >
+        <input type = "submit" class="orange" name = "Submit" value = "<spring:message code="privateOffice.page.canceledTrips.button" />" >
         </form>
 <h3><spring:message code="privateOffice.page.completedTrips.label" /></h3>
 <c:if test="${not empty completedTrips}">

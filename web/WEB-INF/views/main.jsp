@@ -19,7 +19,7 @@
     <link rel='stylesheet' type='text/css' href="<c:url value="/resources/css/style.css"/> ">
     <script src="<c:url value="/resources/js/script.js"/>"></script>
 </head>
-<body>
+<body  bgcolor="#EFEFEF">
 
 
 <jsp:include page="locales.jsp"></jsp:include>
@@ -66,20 +66,20 @@
     </li>
 
 </ul>
-<form method="post" action="show-video" id="video">
+
+<div class="myfon">
+</div>
+
+<!--form method="post" action="show-video" id="video">
     <img src="<c:url value="/resources/images/tv.png" />"> &nbsp;
     <button name="video" class ="href"  onClick="document.getElementById('video').submit()" > <spring:message code="start.page.video.ref" /></button>
-</form>
+</form-->
 
 
 <br/>
 <br/>
 <form:form method="post"  modelAttribute="trainParam" action="findtrains-from-start">
-    <c:if test="${ not empty requestScope.errorRout}">
-    <div class="error">
-        <img src="<c:url value="/resources/images/attention_login.png" />"alt="Картинка">&nbsp; ${requestScope.errorRout}
-    </div>
-    </c:if>
+
 <div class="container" >
     <div class="box">
         <div class="fieldstart" >
@@ -137,10 +137,24 @@
     <div class="box">
         <div class="blockstart" >
             <input type = "hidden" name = "action" value = "find-trains-action" />
-            <input type = "submit" name = "Submit" value = " <spring:message code="start.page.find.button"/>" >
+            <input class="orange" type = "submit" name = "Submit" value = " <spring:message code="start.page.find.button"/>" >
         </div >
         </div>
 </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+    <c:if test="${ not empty requestScope.errorRout}">
+        <div class="error">
+            <img src="<c:url value="/resources/images/attention_login.png" />"alt="Картинка">&nbsp; ${requestScope.errorRout}
+        </div>
+    </c:if>
 </form:form>
+
+<div class="train-im1">
+</div>
+
 </body>
 </html>

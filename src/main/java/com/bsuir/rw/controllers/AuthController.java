@@ -3,22 +3,17 @@ package com.bsuir.rw.controllers;
 import com.bsuir.rw.beans.Train;
 import com.bsuir.rw.beans.User;
 import com.bsuir.rw.model.domain.Users;
-import com.bsuir.rw.model.services.UserServices;
+import com.bsuir.rw.services.UserServices;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.GenericWebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-import org.springframework.web.context.support.XmlWebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.List;
 
 /**
  * Created by USER on 12.04.2017.
@@ -115,10 +110,18 @@ public class AuthController {
             modelAndView.setViewName("authorisation");
             return modelAndView;
         } else {
+if(findUser.getRole().equals("0")) {
+    modelAndView.addObject("user", findUser);
+    modelAndView.setViewName("main");
+    return modelAndView;
+}
 
-            modelAndView.addObject("user",findUser);
-            modelAndView.setViewName("main");
-            return modelAndView;
+            else {
+    modelAndView.addObject("user", findUser);
+    modelAndView.setViewName("mainadmin");
+    return modelAndView;
+
+            }
         }
     }
 

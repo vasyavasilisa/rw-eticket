@@ -71,11 +71,14 @@
     <div class="subbox">
         <div class="text" ><a href="#" ><spring:message code="start.page.submenu.confirm" /></a></div>
     </div >
-    <div class="cursubbox">
+    <div class="cursubbox1">
         <div class="text"> <a href="#" ><spring:message code="start.page.submenu.order" /></a></div>
     </div >
 </div>
 
+<br/>
+<br/>
+<br/>
 <h3><spring:message code="orderNumber.page.successPayment.label" /></h3>
 
 <h2><spring:message code="orderNumber.page.ticketsNumbers.label" /></h2>
@@ -85,11 +88,13 @@
     <br/>
     </c:forEach>
 <h3>
-    <spring:message code="orderNumber.page.text1.label" />${ sessionScope.user.email }
+    <spring:message code="orderNumber.page.text1.label" />&nbsp; ${ sessionScope.user.email }
     <spring:message code="orderNumber.page.text2.label" />
 
+    <br/>
+    <br/>
 <form method="post"   action="private-office">
-    <input type = "submit" name = "Submit" value = " <spring:message code="orderNumber.page.goToPrivateCabinet.button" />" >
+    <input type = "submit" class="orange" name = "Submit" value = " <spring:message code="orderNumber.page.goToPrivateCabinet.button" />" >
     </form>
 </h3>
 </body>

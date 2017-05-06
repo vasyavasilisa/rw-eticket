@@ -15,7 +15,7 @@
     <title><spring:message code="carriagesforusers.page.title" /></title>
     <link rel='stylesheet' type='text/css' href="<c:url value="/resources/css/style.css"/> ">
 </head>
-<body>
+<body bgcolor="#EFEFEF">
 
 <jsp:include page="locales.jsp"></jsp:include>
 <jsp:include page="login.jsp"></jsp:include>
@@ -84,15 +84,17 @@
 </div>
 
 <br/>
+<br/>
+<br/>
+<br/>
 <form action = "places" method = "post" name="myFormCarriage" id="myFormCarriage">
-    ${ sessionScope.trainParam.department }
+  <span style="font-style: italic"> Станция отправления:</span> ${ sessionScope.trainParam.department }
     <br>
-    ${ sessionScope.trainParam.arrive }
+  <span style="font-style: italic">Станция назначения: </span> ${ sessionScope.trainParam.arrive }
     <br>
-    ${ sessionScope.trainParam.date }
-        <br>
-    ${sessionScope.trainId}
-    <table>
+   <span style="font-style: italic"> Дата отправления: </span> ${ sessionScope.trainParam.date }
+
+    <table class="table_col">
         <th><spring:message code="carriagesforusers.page.carnum.label"/> </th><!--Номер вагона-->
         <th><spring:message code="carriagesforusers.page.type.label"/> </th><!--Тип вагона-->
         <th><spring:message code="carriagesforusers.page.countsears.label"/> </th><!--количество свободных мест-->

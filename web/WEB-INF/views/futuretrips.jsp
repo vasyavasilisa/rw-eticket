@@ -64,17 +64,17 @@
 <br/>
 <br/>
 <form method="post" action="private-office" name="futuretrips">
-    <input type = "submit" name = "Submit" value = "<spring:message code="futuretrips.page.completedTrips.button" />" >
+    <input type = "submit" class="orange" name = "Submit" value = "<spring:message code="futuretrips.page.completedTrips.button" />" >
 </form>
 
 <form method="post" action="canceled-orders" name="canceledtrips">
-    <input type = "submit" name = "Submit" value = "<spring:message code="futuretrips.page.canceledTrips.button" />" >
+    <input type = "submit" class="orange" name = "Submit" value = "<spring:message code="futuretrips.page.canceledTrips.button" />" >
 </form>
 
 <form method="post"   action="cancel-order" id="formForCancel">
 <h3><spring:message code="futuretrips.page.title" /></h3>
 <c:if test="${not empty futureTrips}">
-    <table>
+    <table class="table_col3">
         <th><spring:message code="futuretrips.page.orderNumber.label" /></th>
         <th><spring:message code="futuretrips.page.dateTimeOrder.label" /></th>
         <th><spring:message code="futuretrips.page.dateTimeTrip.label" /></th>
@@ -83,11 +83,11 @@
         <th><spring:message code="futuretrips.page.trainNumber.label" /></th>
         <th><spring:message code="futuretrips.page.carNumber.label" /></th>
         <th><spring:message code="futuretrips.page.placeNumber.label" /></th>
-        <th><spring:message code="futuretrips.page.price.label" /></th>
+        <th><spring:message code="futuretrips.page.price.label" />(BYN)</th>
         <th><spring:message code="futuretrips.page.surname.label" /></th>
         <th><spring:message code="futuretrips.page.name.label" /></th>
         <th><spring:message code="futuretrips.page.orderStatus.label" /></th>
-        <th><spring:message code="futuretrips.page.title" /></th>
+        <!--th><spring:message code="futuretrips.page.title" /></th-->
 
         <c:forEach var="futureTrips" items="${futureTrips}" varStatus="status">
             <tr>
@@ -103,7 +103,7 @@
                 <td><c:out value="${ futureTrips.passangerSurname}" /></td>
                 <td><c:out value="${ futureTrips.passangerName}" /></td>
                 <td><c:out value="${ futureTrips.status}" /></td>
-                <td> <button name="cancel" value="${futureTrips.idTicket}"  onClick="document.getElementById('formForCancel').submit()">
+                <td> <button name="cancel" class="orange" value="${futureTrips.idTicket}"  onClick="document.getElementById('formForCancel').submit()">
                     <spring:message code="futuretrips.page.cancelOrder.button" />
                 </button> </td>
             </tr>
